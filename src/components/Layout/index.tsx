@@ -13,8 +13,12 @@ import "sanitize.css"
 import Header from "../Header"
 
 const Main = styled.main`
-  min-height: 100vh;
+  position: absolute;
+  height: 100vh;
   width: 100vw;
+  padding-top: 144px;
+  overflow-y: auto;
+  overflow-x: hidden;
 `
 
 interface ILayout {
