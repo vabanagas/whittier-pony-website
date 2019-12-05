@@ -3,6 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import typography from "../../constants/typography"
+import breakpoints from "../../constants/breakpoints"
 import colors from "../../constants/colors"
 import Button from "../Button"
 import Menu from "../../icons/Menu"
@@ -21,13 +22,30 @@ const Header = styled.header`
   justify-content: space-between;
   padding: 0 48px;
   z-index: 1000;
+
+  @media ${breakpoints.desktop} {
+    padding: 0 24px;
+  }
 `
 
 const NavLink = styled(Link)`
-  ${typography.H5};
-  color: ${colors.white};
-  text-decoration: none;
-  margin-right: 46px;
+  display: none;
+
+  @media ${breakpoints.desktop} {
+    display: initial;
+    ${typography.H5};
+    color: ${colors.white};
+    text-decoration: none;
+    margin-right: 46px;
+  }
+`
+
+const RegisterButton = styled(Button)`
+  display: none;
+
+  @media ${breakpoints.desktop} {
+    display: initial;
+  }
 `
 
 const Content = styled.div`
@@ -80,7 +98,7 @@ export default ({ siteTitle = `` }: IHeader) => {
         <NavLink to="/">About</NavLink>
         <NavLink to="/">Divisions</NavLink>
         <NavLink to="/">Schedules</NavLink>
-        <Button>Register</Button>
+        <RegisterButton>Register</RegisterButton>
         <SearchIcon />
         <MenuIcon />
       </Content>
