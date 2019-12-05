@@ -5,6 +5,8 @@ import Img from "gatsby-image"
 import typography from "../../constants/typography"
 import colors from "../../constants/colors"
 import Button from "../Button"
+import Menu from "../../icons/Menu"
+import Search from "../../icons/Search"
 
 const Header = styled.header`
   background: rebeccapurple;
@@ -39,6 +41,16 @@ const Logo = styled(Img)`
   width: 72px;
 `
 
+const SearchIcon = styled(Search)`
+  color: ${colors.white};
+  margin-right: 32px;
+  margin-left: 48px;
+`
+
+const MenuIcon = styled(Menu)`
+  color: ${colors.white};
+`
+
 interface IHeader {
   siteTitle?: string
 }
@@ -69,6 +81,8 @@ export default ({ siteTitle = `` }: IHeader) => {
         <NavLink to="/">Divisions</NavLink>
         <NavLink to="/">Schedules</NavLink>
         <Button>Register</Button>
+        <SearchIcon />
+        <MenuIcon />
       </Content>
     </Header>
   )
