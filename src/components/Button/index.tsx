@@ -12,15 +12,15 @@ const Button = styled.button<IButton>`
   height: 56px;
   padding: 0 36px;
   border: 1px solid ${colors.black};
-  border-color: ${props => (props.dark ? colors.white : colors.black)};
+  border-color: ${props => (props.dark ? colors.black : colors.white)};
   background-color: transparent;
-  color: ${props => (props.dark ? colors.white : colors.black)};
-  outline-color: ${props => (props.dark ? colors.white : colors.black)};
+  color: ${props => (props.dark ? colors.black : colors.white)};
+  outline-color: ${props => (props.dark ? colors.black : colors.white)};
   transition: color ${durations.short}, background-color ${durations.short};
 
   &:hover {
-    background-color: ${props => (props.dark ? colors.white : colors.black)};
-    color: ${props => (props.dark ? colors.black : colors.white)};
+    background-color: ${props => (props.dark ? colors.black : colors.white)};
+    color: ${props => (props.dark ? colors.white : colors.black)};
   }
 `
 
