@@ -61,8 +61,12 @@ const Logo = styled(Img)`
 
 const SearchIcon = styled(Search)`
   color: ${colors.offWhite};
-  margin-right: 32px;
-  margin-left: 48px;
+  margin-right: 24px;
+
+  @media ${breakpoints.desktop} {
+    margin-right: 32px;
+    margin-left: 48px;
+  }
 `
 
 const MenuIcon = styled(Menu)`
@@ -78,7 +82,7 @@ export default ({ siteTitle = `` }: IHeader) => {
     query {
       placeholderImage: file(relativePath: { eq: "pony-logo.png" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
+          fluid(maxWidth: 72) {
             ...GatsbyImageSharpFluid
           }
         }

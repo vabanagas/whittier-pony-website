@@ -59,7 +59,7 @@ const Subtitle = styled.div`
 
   @media ${breakpoints.desktop} {
     ${typography.H3};
-    color: ${colors.offWhite};
+    color: ${colors.lightGray};
   }
 `
 
