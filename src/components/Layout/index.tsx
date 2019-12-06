@@ -11,7 +11,7 @@ import styled from "styled-components"
 import "sanitize.css"
 
 import Header from "../Header"
-import breakpoints from "../../constants/breakpoints"
+import values from "../../constants/values"
 
 const Main = styled.main`
   position: absolute;
@@ -19,13 +19,6 @@ const Main = styled.main`
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 24px;
-  padding-top: calc(144px + 24px);
-
-  @media ${breakpoints.desktop} {
-    padding: calc(1 / 12 * 100vw);
-    padding-top: calc(144px + 1 / 12 * 100vw);
-  }
 `
 
 interface ILayout {

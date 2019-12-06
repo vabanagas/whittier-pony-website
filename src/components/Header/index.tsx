@@ -8,14 +8,14 @@ import colors from "../../constants/colors"
 import Button from "../Button"
 import Menu from "../../icons/Menu"
 import Search from "../../icons/Search"
+import values from "../../constants/values"
 
 const Header = styled.header`
-  background: rebeccapurple;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 144px;
+  height: ${values.HEADER_HEIGHT};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -34,7 +34,7 @@ const NavLink = styled(Link)`
   @media ${breakpoints.desktop} {
     display: initial;
     ${typography.H5};
-    color: ${colors.white};
+    color: ${colors.offWhite};
     text-decoration: none;
     margin-right: 46px;
   }
@@ -60,13 +60,13 @@ const Logo = styled(Img)`
 `
 
 const SearchIcon = styled(Search)`
-  color: ${colors.white};
+  color: ${colors.offWhite};
   margin-right: 32px;
   margin-left: 48px;
 `
 
 const MenuIcon = styled(Menu)`
-  color: ${colors.white};
+  color: ${colors.offWhite};
 `
 
 interface IHeader {
