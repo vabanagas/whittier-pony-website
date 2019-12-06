@@ -11,7 +11,7 @@ import styled from "styled-components"
 import "sanitize.css"
 
 import Header from "../Header"
-import values from "../../constants/values"
+import values from "../../../constants/values"
 
 const Main = styled.main`
   position: absolute;

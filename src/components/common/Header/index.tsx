@@ -2,13 +2,13 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import typography from "../../constants/typography"
-import breakpoints from "../../constants/breakpoints"
-import colors from "../../constants/colors"
+import typography from "../../../constants/typography"
+import breakpoints from "../../../constants/breakpoints"
+import colors from "../../../constants/colors"
 import Button from "../Button"
-import Menu from "../../icons/Menu"
-import Search from "../../icons/Search"
-import values from "../../constants/values"
+import Menu from "../../../icons/Menu"
+import Search from "../../../icons/Search"
+import values from "../../../constants/values"
 
 const Header = styled.header`
   position: absolute;
@@ -20,11 +20,11 @@ const Header = styled.header`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 48px;
+  padding: 0 24px;
   z-index: 1000;
 
   @media ${breakpoints.desktop} {
-    padding: 0 24px;
+    padding: 0 48px;
   }
 `
 

@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import colors from "../../constants/colors"
-import typography from "../../constants/typography"
-import durations from "../../constants/durations"
+import colors from "../../../constants/colors"
+import typography from "../../../constants/typography"
+import durations from "../../../constants/durations"
 
 interface IButton {
   dark?: boolean
