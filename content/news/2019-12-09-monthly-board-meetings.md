@@ -1,5 +1,5 @@
 ---
-type: News
+type: Announcement
 title: Monthly Board Meetings
 date: 2019-12-09T22:54:27.574Z
 ---
