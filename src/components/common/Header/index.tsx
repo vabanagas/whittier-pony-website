@@ -55,17 +55,37 @@ const HeaderContent = styled.div`
   }
 `
 
+const NavLinkIndicator = styled.div<IShowBackgroundProps>`
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: ${props =>
+    props[`data-show-background`] ? colors.black : colors.offWhite};
+  transform-origin: bottom center;
+  transform: scaleX(0);
+  will-change: transform;
+  transition: transform ${durations.short};
+`
+
 const NavLink = styled(GatsbyLink)<IShowBackgroundProps>`
   display: none;
 
   @media ${breakpoints.desktop} {
     display: initial;
+    position: relative;
     ${typography.H5};
     color: ${props =>
       props[`data-show-background`] ? colors.black : colors.offWhite};
     text-decoration: none;
     margin-right: 46px;
     transition: color ${durations.medium};
+
+    &:hover {
+      ${NavLinkIndicator} {
+        transform: scaleX(1);
+      }
+    }
   }
 `
 
@@ -170,12 +190,15 @@ export default ({ siteTitle = `` }: IHeader) => {
         <Content>
           <NavLink to="/about" data-show-background={showBackground}>
             About
+            <NavLinkIndicator data-show-background={showBackground} />
           </NavLink>
           <NavLink to="/divisions" data-show-background={showBackground}>
             Divisions
+            <NavLinkIndicator data-show-background={showBackground} />
           </NavLink>
           <NavLink to="/schedules" data-show-background={showBackground}>
             Schedules
+            <NavLinkIndicator data-show-background={showBackground} />
           </NavLink>
           <RegisterButton
             href="https://wpb.sportssignup.com/site/"

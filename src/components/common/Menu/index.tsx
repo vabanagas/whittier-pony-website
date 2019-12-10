@@ -36,16 +36,28 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 24px;
 
   @media ${breakpoints.desktop} {
-    align-items: flex-start;
     padding: calc(1 / 12 * 100vw);
   }
 `
 
+const NavLinkIndicator = styled.div`
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: ${colors.offWhite};
+  transform-origin: bottom center;
+  transform: scaleX(0);
+  will-change: transform;
+  transition: transform ${durations.medium};
+`
+
 const NavLink = styled(GatsbyLink)`
+  position: relative;
   ${typography.H4};
   color: ${colors.offWhite};
   text-decoration: none;
@@ -53,6 +65,12 @@ const NavLink = styled(GatsbyLink)`
   @media ${breakpoints.desktop} {
     ${typography.H3};
     color: ${colors.offWhite};
+  }
+
+  &:hover {
+    ${NavLinkIndicator} {
+      transform: scaleX(1);
+    }
   }
 `
 
@@ -104,21 +122,27 @@ const ModalAdapter = ({ className, modalClassName, ...props }: IProps) => {
       <Content>
         <NavLink to="/" onClick={props.onRequestClose}>
           Home
+          <NavLinkIndicator />
         </NavLink>
         <NavLink to="/about" onClick={props.onRequestClose}>
           About
+          <NavLinkIndicator />
         </NavLink>
         <NavLink to="/divisions" onClick={props.onRequestClose}>
           Divisions
+          <NavLinkIndicator />
         </NavLink>
         <NavLink to="/schedules" onClick={props.onRequestClose}>
           Schedules
+          <NavLinkIndicator />
         </NavLink>
         <NavLink to="/shop" onClick={props.onRequestClose}>
           Shop
+          <NavLinkIndicator />
         </NavLink>
         <NavLink to="/resources" onClick={props.onRequestClose}>
           Resources
+          <NavLinkIndicator />
         </NavLink>
       </Content>
       <Header>
