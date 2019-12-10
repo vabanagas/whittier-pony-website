@@ -12,7 +12,7 @@ import values from "../../../constants/values"
 import durations from "../../../constants/durations"
 
 interface IShowBackgroundProps {
-  showBackground: boolean
+  "data-show-background": boolean
 }
 
 const Header = styled.header`
@@ -32,7 +32,7 @@ const HeaderBackground = styled.div<IShowBackgroundProps>`
   bottom: 0;
   border-bottom: 1px solid ${colors.lightGray};
   background-color: ${colors.offWhite};
-  opacity: ${props => (props.showBackground ? 1 : 0)};
+  opacity: ${props => (props[`data-show-background`] ? 1 : 0)};
   transition: opacity ${durations.medium};
   will-change: opacity;
 `
@@ -60,7 +60,8 @@ const NavLink = styled(GatsbyLink)<IShowBackgroundProps>`
   @media ${breakpoints.desktop} {
     display: initial;
     ${typography.H5};
-    color: ${props => (props.showBackground ? colors.black : colors.offWhite)};
+    color: ${props =>
+      props[`data-show-background`] ? colors.black : colors.offWhite};
     text-decoration: none;
     margin-right: 46px;
     transition: color ${durations.medium};
@@ -88,7 +89,8 @@ const Logo = styled(Img)`
 
 const SearchIcon = styled(Search)<IShowBackgroundProps>`
   margin-right: 24px;
-  color: ${props => (props.showBackground ? colors.black : colors.offWhite)};
+  color: ${props =>
+    props[`data-show-background`] ? colors.black : colors.offWhite};
   transition: stroke ${durations.medium};
 
   @media ${breakpoints.desktop} {
@@ -98,7 +100,8 @@ const SearchIcon = styled(Search)<IShowBackgroundProps>`
 `
 
 const MenuIcon = styled(Menu)<IShowBackgroundProps>`
-  color: ${props => (props.showBackground ? colors.black : colors.offWhite)};
+  color: ${props =>
+    props[`data-show-background`] ? colors.black : colors.offWhite};
   transition: stroke ${durations.medium};
 `
 
@@ -143,7 +146,7 @@ export default ({ siteTitle = `` }: IHeader) => {
 
   return (
     <Header>
-      <HeaderBackground showBackground={showBackground} />
+      <HeaderBackground data-show-background={showBackground} />
       <HeaderContent>
         <GatsbyLink to="/">
           <Logo
@@ -152,13 +155,13 @@ export default ({ siteTitle = `` }: IHeader) => {
           />
         </GatsbyLink>
         <Content>
-          <NavLink to="/about" showBackground={showBackground}>
+          <NavLink to="/about" data-show-background={showBackground}>
             About
           </NavLink>
-          <NavLink to="/divisions" showBackground={showBackground}>
+          <NavLink to="/divisions" data-show-background={showBackground}>
             Divisions
           </NavLink>
-          <NavLink to="/schedules" showBackground={showBackground}>
+          <NavLink to="/schedules" data-show-background={showBackground}>
             Schedules
           </NavLink>
           <RegisterButton
@@ -168,8 +171,8 @@ export default ({ siteTitle = `` }: IHeader) => {
           >
             Register
           </RegisterButton>
-          <SearchIcon showBackground={showBackground} />
-          <MenuIcon showBackground={showBackground} />
+          <SearchIcon data-show-background={showBackground} />
+          <MenuIcon data-show-background={showBackground} />
         </Content>
       </HeaderContent>
     </Header>

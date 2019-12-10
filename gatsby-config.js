@@ -26,10 +26,10 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Whittier PONY Baseball`,
-        short_name: `WPB`,
+        short_name: `PONY`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#002E5D`,
+        theme_color: `#002E5D`,
         display: `minimal-ui`,
         icon: `src/images/pony-logo.png`, // This path is relative to the root of the site.
       },
