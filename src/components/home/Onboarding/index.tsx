@@ -129,7 +129,7 @@ const Onboarding = () => {
       placeholderImage: file(relativePath: { eq: "landing.png" }) {
         childImageSharp {
           fluid(maxWidth: 1080) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }

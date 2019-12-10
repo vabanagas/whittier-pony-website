@@ -141,7 +141,7 @@ export default ({ siteTitle = `` }: IHeader) => {
       placeholderImage: file(relativePath: { eq: "pony-logo.png" }) {
         childImageSharp {
           fluid(maxWidth: 72) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
