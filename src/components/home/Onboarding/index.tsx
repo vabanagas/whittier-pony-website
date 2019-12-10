@@ -67,6 +67,29 @@ const Subtitle = styled.div`
   }
 `
 
+const ScrollHint = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 96px;
+
+  @media ${breakpoints.desktop} {
+    left: calc(2 / 12 * 100vw);
+  }
+`
+
+const ScrollHintText = styled.div`
+  ${typography.SmallCaps};
+  color: ${colors.offWhite};
+  margin-bottom: 16px;
+  transform: translateX(-50%);
+`
+
+const ScrollHintLine = styled.div`
+  height: 64px;
+  width: 2px;
+  background-color: ${colors.offWhite};
+`
+
 const Onboarding = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -88,6 +111,10 @@ const Onboarding = () => {
         <Title>Whittier Pony</Title>
         <Subtitle>Real Baseball</Subtitle>
       </Content>
+      <ScrollHint>
+        <ScrollHintText>Play Ball</ScrollHintText>
+        <ScrollHintLine />
+      </ScrollHint>
     </Container>
   )
 }

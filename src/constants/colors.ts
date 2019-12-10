@@ -6,4 +6,5 @@ export default {
   lightGray: "#B2B2B2",
   red: "#D81E22",
   blue: "#002E5D",
+  transparent: "transparent",
 }

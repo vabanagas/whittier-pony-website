@@ -1,46 +1,73 @@
-import { Link, useStaticQuery, graphql } from "gatsby"
-import React from "react"
+import { Link as GatsbyLink, useStaticQuery, graphql } from "gatsby"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import typography from "../../../constants/typography"
 import breakpoints from "../../../constants/breakpoints"
 import colors from "../../../constants/colors"
-import Button from "../Button"
+import Link from "../Link"
 import Menu from "../../../icons/Menu"
 import Search from "../../../icons/Search"
 import values from "../../../constants/values"
+import durations from "../../../constants/durations"
+
+interface IShowBackgroundProps {
+  showBackground: boolean
+}
 
 const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: ${values.HEADER_HEIGHT}px;
+  z-index: 1000;
+`
+
+const HeaderBackground = styled.div<IShowBackgroundProps>`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: ${values.HEADER_HEIGHT};
+  bottom: 0;
+  border-bottom: 1px solid ${colors.lightGray};
+  background-color: ${colors.offWhite};
+  opacity: ${props => (props.showBackground ? 1 : 0)};
+  transition: opacity ${durations.medium};
+  will-change: opacity;
+`
+
+const HeaderContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  z-index: 1000;
 
   @media ${breakpoints.desktop} {
     padding: 0 48px;
   }
 `
 
-const NavLink = styled(Link)`
+const NavLink = styled(GatsbyLink)<IShowBackgroundProps>`
   display: none;
 
   @media ${breakpoints.desktop} {
     display: initial;
     ${typography.H5};
-    color: ${colors.offWhite};
+    color: ${props => (props.showBackground ? colors.black : colors.offWhite)};
     text-decoration: none;
     margin-right: 46px;
+    transition: color ${durations.medium};
   }
 `
 
-const RegisterButton = styled(Button)`
+const RegisterButton = styled(Link)`
   display: none;
 
   @media ${breakpoints.desktop} {
@@ -59,9 +86,10 @@ const Logo = styled(Img)`
   width: 72px;
 `
 
-const SearchIcon = styled(Search)`
-  color: ${colors.offWhite};
+const SearchIcon = styled(Search)<IShowBackgroundProps>`
   margin-right: 24px;
+  color: ${props => (props.showBackground ? colors.black : colors.offWhite)};
+  transition: stroke ${durations.medium};
 
   @media ${breakpoints.desktop} {
     margin-right: 32px;
@@ -69,8 +97,9 @@ const SearchIcon = styled(Search)`
   }
 `
 
-const MenuIcon = styled(Menu)`
-  color: ${colors.offWhite};
+const MenuIcon = styled(Menu)<IShowBackgroundProps>`
+  color: ${props => (props.showBackground ? colors.black : colors.offWhite)};
+  transition: stroke ${durations.medium};
 `
 
 interface IHeader {
@@ -78,6 +107,7 @@ interface IHeader {
 }
 
 export default ({ siteTitle = `` }: IHeader) => {
+  const [showBackground, setShowBackground] = useState(false)
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "pony-logo.png" }) {
@@ -90,22 +120,58 @@ export default ({ siteTitle = `` }: IHeader) => {
     }
   `)
 
+  const onScroll = () => {
+    const scrollY = window.scrollY
+    if (scrollY > values.HEADER_HEIGHT) {
+      setShowBackground(true)
+    } else {
+      setShowBackground(false)
+    }
+  }
+
+  // Scroll event listener
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  // Resize event listener
+  useEffect(() => {
+    window.addEventListener("resize", onScroll)
+    return () => window.removeEventListener("resize", onScroll)
+  }, [])
+
   return (
     <Header>
-      <Link to="/">
-        <Logo
-          fluid={data.placeholderImage.childImageSharp.fluid}
-          alt={siteTitle}
-        />
-      </Link>
-      <Content>
-        <NavLink to="/">About</NavLink>
-        <NavLink to="/">Divisions</NavLink>
-        <NavLink to="/">Schedules</NavLink>
-        <RegisterButton>Register</RegisterButton>
-        <SearchIcon />
-        <MenuIcon />
-      </Content>
+      <HeaderBackground showBackground={showBackground} />
+      <HeaderContent>
+        <GatsbyLink to="/">
+          <Logo
+            fluid={data.placeholderImage.childImageSharp.fluid}
+            alt={siteTitle}
+          />
+        </GatsbyLink>
+        <Content>
+          <NavLink to="/about" showBackground={showBackground}>
+            About
+          </NavLink>
+          <NavLink to="/divisions" showBackground={showBackground}>
+            Divisions
+          </NavLink>
+          <NavLink to="/schedules" showBackground={showBackground}>
+            Schedules
+          </NavLink>
+          <RegisterButton
+            href="https://wpb.sportssignup.com/site/"
+            target="__blank"
+            dark={showBackground}
+          >
+            Register
+          </RegisterButton>
+          <SearchIcon showBackground={showBackground} />
+          <MenuIcon showBackground={showBackground} />
+        </Content>
+      </HeaderContent>
     </Header>
   )
 }

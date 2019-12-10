@@ -3,14 +3,14 @@ import colors from "../../../constants/colors"
 import typography from "../../../constants/typography"
 import durations from "../../../constants/durations"
 
-interface IButton {
+interface ILink {
   dark?: boolean
 }
 
-const Button = styled.button<IButton>`
+const Link = styled.a<ILink>`
   ${typography.Button}
-  height: 56px;
-  padding: 0 36px;
+  padding: 15px 36px;
+  text-align: center;
   border: 1px solid ${colors.black};
   border-color: ${props => (props.dark ? colors.black : colors.offWhite)};
   background-color: transparent;
@@ -27,4 +27,4 @@ const Button = styled.button<IButton>`
   }
 `
 
-export default Button
+export default Link

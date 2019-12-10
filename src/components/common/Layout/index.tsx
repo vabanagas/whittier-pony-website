@@ -11,15 +11,8 @@ import styled from "styled-components"
 import "sanitize.css"
 
 import Header from "../Header"
-import values from "../../../constants/values"
 
-const Main = styled.main`
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  overflow-y: auto;
-  overflow-x: hidden;
-`
+const Main = styled.main``
 
 interface ILayout {
   children: React.ReactNode
