@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 import typography from "../constants/typography"
 import "../fonts/stylesheet.css"
+import durations from "../constants/durations"
 
 const GlobalStyle = createGlobalStyle`
   h1 {
@@ -29,6 +30,23 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {
     ${typography.Body}
+  }
+
+  .ReactModal__Overlay {
+      opacity: 0;
+      transition: opacity ${durations.long};
+  }
+
+  .ReactModal__Overlay--after-open{
+      opacity: 1;
+  }
+
+  .ReactModal__Overlay--before-close{
+      opacity: 0;
+  }
+
+  .ReactModal__Body--open {
+    overflow-y: hidden;
   }
 `
 

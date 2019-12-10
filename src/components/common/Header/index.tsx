@@ -6,10 +6,11 @@ import typography from "../../../constants/typography"
 import breakpoints from "../../../constants/breakpoints"
 import colors from "../../../constants/colors"
 import Link from "../Link"
-import Menu from "../../../icons/Menu"
-import Search from "../../../icons/Search"
+import MenuIcon from "../../../icons/MenuIcon"
+import SearchIcon from "../../../icons/SearchIcon"
 import values from "../../../constants/values"
 import durations from "../../../constants/durations"
+import Menu from "../Menu"
 
 interface IShowBackgroundProps {
   "data-show-background": boolean
@@ -87,7 +88,7 @@ const Logo = styled(Img)`
   width: 72px;
 `
 
-const SearchIcon = styled(Search)<IShowBackgroundProps>`
+const StyledSearchIcon = styled(SearchIcon)<IShowBackgroundProps>`
   margin-right: 24px;
   color: ${props =>
     props[`data-show-background`] ? colors.black : colors.offWhite};
@@ -99,7 +100,7 @@ const SearchIcon = styled(Search)<IShowBackgroundProps>`
   }
 `
 
-const MenuIcon = styled(Menu)<IShowBackgroundProps>`
+const StyledMenuIcon = styled(MenuIcon)<IShowBackgroundProps>`
   color: ${props =>
     props[`data-show-background`] ? colors.black : colors.offWhite};
   transition: stroke ${durations.medium};
@@ -110,6 +111,7 @@ interface IHeader {
 }
 
 export default ({ siteTitle = `` }: IHeader) => {
+  const [showMenu, setShowMenu] = useState(false)
   const [showBackground, setShowBackground] = useState(false)
   const data = useStaticQuery(graphql`
     query {
@@ -144,6 +146,14 @@ export default ({ siteTitle = `` }: IHeader) => {
     return () => window.removeEventListener("resize", onScroll)
   }, [])
 
+  const closeMenu = () => {
+    setShowMenu(false)
+  }
+
+  const openMenu = () => {
+    setShowMenu(true)
+  }
+
   return (
     <Header>
       <HeaderBackground data-show-background={showBackground} />
@@ -171,10 +181,14 @@ export default ({ siteTitle = `` }: IHeader) => {
           >
             Register
           </RegisterButton>
-          <SearchIcon data-show-background={showBackground} />
-          <MenuIcon data-show-background={showBackground} />
+          <StyledSearchIcon data-show-background={showBackground} />
+          <StyledMenuIcon
+            data-show-background={showBackground}
+            onClick={openMenu}
+          />
         </Content>
       </HeaderContent>
+      <Menu isOpen={showMenu} onRequestClose={closeMenu} />
     </Header>
   )
 }
