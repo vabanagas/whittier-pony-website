@@ -11,6 +11,7 @@ import styled from "styled-components"
 import "sanitize.css"
 
 import Header from "../Header"
+import GlobalStyle from "../../../styles/GlobalStyle"
 
 const Main = styled.main``
 
@@ -31,6 +32,7 @@ const Layout = ({ children }: ILayout) => {
 
   return (
     <>
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
       <Main>{children}</Main>
     </>

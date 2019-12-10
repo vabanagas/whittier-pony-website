@@ -16,6 +16,7 @@ const H1 = css`
   font-weight: 900;
   font-size: 84px;
   line-height: 96px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -25,6 +26,7 @@ const H2 = css`
   font-weight: 900;
   font-size: 63px;
   line-height: 72px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -34,6 +36,7 @@ const H3 = css`
   font-weight: 900;
   font-size: 48px;
   line-height: 56px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -43,6 +46,7 @@ const H4 = css`
   font-weight: 800;
   font-size: 36px;
   line-height: 40px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -52,6 +56,7 @@ const H5 = css`
   font-weight: 800;
   font-size: 26px;
   line-height: 32px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -61,6 +66,7 @@ const H6 = css`
   font-weight: 800;
   font-size: 20px;
   line-height: 24px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -70,6 +76,7 @@ const BodyBold = css`
   font-weight: bold;
   font-size: 16px;
   line-height: 20px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -79,6 +86,7 @@ const Body = css`
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -88,6 +96,7 @@ const Subtext = css`
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -99,6 +108,7 @@ const SmallCaps = css`
   line-height: 16px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
+  margin: 0;
   color: ${colors.black};
 `
 
@@ -110,6 +120,7 @@ const Button = css`
   line-height: 24px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
+  margin: 0;
   color: ${colors.black};
 `
 
