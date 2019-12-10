@@ -7,6 +7,8 @@ import colors from "../../../constants/colors"
 import breakpoints from "../../../constants/breakpoints"
 import values from "../../../constants/values"
 import typography from "../../../constants/typography"
+import MenuIcon from "../../../icons/MenuIcon"
+import durations from "../../../constants/durations"
 
 const Header = styled.div`
   position: absolute;
@@ -54,6 +56,36 @@ const NavLink = styled(GatsbyLink)`
   }
 `
 
+interface IMenuProps {
+  "data-is-open": boolean
+}
+
+const StyledMenuIcon = styled(MenuIcon)<IMenuProps>`
+  cursor: pointer;
+  color: ${colors.offWhite};
+
+  line {
+    transition: transform ${durations.long};
+    will-change: transform;
+  }
+
+  line:first-child {
+    transform-origin: center;
+    transform: ${props =>
+      props[`data-is-open`]
+        ? `rotate(45deg) translateY(5px)`
+        : `rotate(0) translateY(0)`};
+  }
+
+  line:last-child {
+    transform-origin: center;
+    transform: ${props =>
+      props[`data-is-open`]
+        ? `rotate(-45deg) scaleX(1.5) translateY(-4px) translateX(4px)`
+        : `rotate(0) scaleX(1) translateY(0) translateX(0)`};
+  }
+`
+
 interface IProps extends ReactModal.Props {
   className?: string
   modalClassName?: string
@@ -70,14 +102,31 @@ const ModalAdapter = ({ className, modalClassName, ...props }: IProps) => {
       {...props}
     >
       <Content>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/divisions">Divisions</NavLink>
-        <NavLink to="/schedules">Schedules</NavLink>
-        <NavLink to="/shop">Shop</NavLink>
-        <NavLink to="/resources">Resources</NavLink>
+        <NavLink to="/" onClick={props.onRequestClose}>
+          Home
+        </NavLink>
+        <NavLink to="/about" onClick={props.onRequestClose}>
+          About
+        </NavLink>
+        <NavLink to="/divisions" onClick={props.onRequestClose}>
+          Divisions
+        </NavLink>
+        <NavLink to="/schedules" onClick={props.onRequestClose}>
+          Schedules
+        </NavLink>
+        <NavLink to="/shop" onClick={props.onRequestClose}>
+          Shop
+        </NavLink>
+        <NavLink to="/resources" onClick={props.onRequestClose}>
+          Resources
+        </NavLink>
       </Content>
-      <Header />
+      <Header>
+        <StyledMenuIcon
+          onClick={props.onRequestClose}
+          data-is-open={props.isOpen}
+        />
+      </Header>
     </Modal>
   )
 }

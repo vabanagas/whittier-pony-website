@@ -6,6 +6,9 @@ import GatsbyImage from "gatsby-image"
 import colors from "../../../constants/colors"
 import breakpoints from "../../../constants/breakpoints"
 import typography from "../../../constants/typography"
+import FacebookIcon from "../../../icons/FacebookIcon"
+import InstagramIcon from "../../../icons/InstagramIcon"
+import Link from "../../common/Link"
 
 const Container = styled.div`
   position: relative;
@@ -90,6 +93,36 @@ const ScrollHintLine = styled.div`
   background-color: ${colors.offWhite};
 `
 
+const SocialLinks = styled.div`
+  position: absolute;
+  bottom: 48px;
+  right: 24px;
+
+  @media ${breakpoints.desktop} {
+    right: 48px;
+  }
+`
+
+const InstagramLink = styled(InstagramIcon)`
+  color: ${colors.offWhite};
+`
+
+const FacebookLink = styled(FacebookIcon)`
+  color: ${colors.offWhite};
+`
+
+const SocialLinksDivider = styled.div`
+  background-color: ${colors.offWhite};
+  height: 2px;
+  width: 24px;
+  margin: 32px 0;
+
+  @media ${breakpoints.desktop} {
+    width: 32px;
+    margin: 36px 0;
+  }
+`
+
 const Onboarding = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -115,6 +148,15 @@ const Onboarding = () => {
         <ScrollHintText>Play Ball</ScrollHintText>
         <ScrollHintLine />
       </ScrollHint>
+      <SocialLinks>
+        <a href="https://www.instagram.com/whittierpony/" target="__blank">
+          <InstagramLink />
+        </a>
+        <SocialLinksDivider />
+        <a href="https://www.facebook.com/WhittierPony/" target="__blank">
+          <FacebookLink />
+        </a>
+      </SocialLinks>
     </Container>
   )
 }

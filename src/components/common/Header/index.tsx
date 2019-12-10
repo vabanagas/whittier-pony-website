@@ -89,6 +89,7 @@ const Logo = styled(Img)`
 `
 
 const StyledSearchIcon = styled(SearchIcon)<IShowBackgroundProps>`
+  cursor: pointer;
   margin-right: 24px;
   color: ${props =>
     props[`data-show-background`] ? colors.black : colors.offWhite};
@@ -101,9 +102,11 @@ const StyledSearchIcon = styled(SearchIcon)<IShowBackgroundProps>`
 `
 
 const StyledMenuIcon = styled(MenuIcon)<IShowBackgroundProps>`
+  cursor: pointer;
   color: ${props =>
     props[`data-show-background`] ? colors.black : colors.offWhite};
   transition: stroke ${durations.medium};
+  z-index: 1011;
 `
 
 interface IHeader {
