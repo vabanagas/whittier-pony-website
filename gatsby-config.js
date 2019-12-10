@@ -39,5 +39,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-netlify-cms`,
+    `gatsby-plugin-offline`,
   ],
 }

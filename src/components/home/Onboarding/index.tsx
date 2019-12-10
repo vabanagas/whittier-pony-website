@@ -149,11 +149,19 @@ const Onboarding = () => {
         <ScrollHintLine />
       </ScrollHint>
       <SocialLinks>
-        <a href="https://www.instagram.com/whittierpony/" target="__blank">
+        <a
+          href="https://www.instagram.com/whittierpony/"
+          target="__blank"
+          aria-label="Open Whittier PONY Instragram page"
+        >
           <InstagramLink />
         </a>
         <SocialLinksDivider />
-        <a href="https://www.facebook.com/WhittierPony/" target="__blank">
+        <a
+          href="https://www.facebook.com/WhittierPony/"
+          target="__blank"
+          aria-label="Open Whittier PONY Facebook page"
+        >
           <FacebookLink />
         </a>
       </SocialLinks>
