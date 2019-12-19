@@ -49,21 +49,21 @@ const Content = styled.div`
 `
 
 const Title = styled.div`
-  ${typography.H3};
+  ${typography.H1};
   color: ${colors.offWhite};
 
   @media ${breakpoints.desktop} {
-    ${typography.H1};
+    ${typography.Display};
     color: ${colors.offWhite};
   }
 `
 
 const Subtitle = styled.div`
-  ${typography.H5};
+  ${typography.H3};
   color: ${colors.lightGray};
 
   @media ${breakpoints.desktop} {
-    ${typography.H3};
+    ${typography.H1};
     color: ${colors.lightGray};
   }
 `

@@ -4,15 +4,6 @@ import colors from "./colors"
 const Display = css`
   font-family: "Proxima Nova A";
   font-style: normal;
-  font-weight: 800;
-  font-size: 112px;
-  line-height: 120px;
-  color: ${colors.black};
-`
-
-const H1 = css`
-  font-family: "Proxima Nova A";
-  font-style: normal;
   font-weight: 900;
   font-size: 84px;
   line-height: 96px;
@@ -20,17 +11,7 @@ const H1 = css`
   color: ${colors.black};
 `
 
-const H2 = css`
-  font-family: "Proxima Nova A";
-  font-style: normal;
-  font-weight: 900;
-  font-size: 63px;
-  line-height: 72px;
-  margin: 0;
-  color: ${colors.black};
-`
-
-const H3 = css`
+const H1 = css`
   font-family: "Proxima Nova A";
   font-style: normal;
   font-weight: 900;
@@ -40,7 +21,7 @@ const H3 = css`
   color: ${colors.black};
 `
 
-const H4 = css`
+const H2 = css`
   font-family: "Proxima Nova A";
   font-style: normal;
   font-weight: 800;
@@ -50,7 +31,7 @@ const H4 = css`
   color: ${colors.black};
 `
 
-const H5 = css`
+const H3 = css`
   font-family: "Proxima Nova A";
   font-style: normal;
   font-weight: 800;
@@ -60,7 +41,7 @@ const H5 = css`
   color: ${colors.black};
 `
 
-const H6 = css`
+const H4 = css`
   font-family: "Proxima Nova A";
   font-style: normal;
   font-weight: 800;
@@ -69,6 +50,10 @@ const H6 = css`
   margin: 0;
   color: ${colors.black};
 `
+
+const H5 = H4
+
+const H6 = H4
 
 const BodyBold = css`
   font-family: "Proxima Nova";

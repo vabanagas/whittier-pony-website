@@ -100,7 +100,7 @@ const NavLink = styled(GatsbyLink)<IShowBackgroundProps>`
   @media ${breakpoints.desktop} {
     display: initial;
     position: relative;
-    ${typography.H5};
+    ${typography.H3};
     color: ${props =>
       props[`data-show-background`] ? colors.black : colors.offWhite};
     text-decoration: none;

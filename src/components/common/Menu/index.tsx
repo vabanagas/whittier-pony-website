@@ -58,12 +58,12 @@ const NavLinkIndicator = styled.div`
 
 const NavLink = styled(GatsbyLink)`
   position: relative;
-  ${typography.H4};
+  ${typography.H2};
   color: ${colors.offWhite};
   text-decoration: none;
 
   @media ${breakpoints.desktop} {
-    ${typography.H3};
+    ${typography.H1};
     color: ${colors.offWhite};
   }
 
