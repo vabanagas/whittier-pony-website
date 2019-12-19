@@ -14,7 +14,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: "images",
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/static/images`,
       },
     },
     {
@@ -40,7 +40,7 @@ module.exports = {
         background_color: `#002E5D`,
         theme_color: `#002E5D`,
         display: `minimal-ui`,
-        icon: `src/images/pony-logo.png`, // This path is relative to the root of the site.
+        icon: `static/images/pony-logo.png`,
       },
     },
     `gatsby-plugin-typescript`,

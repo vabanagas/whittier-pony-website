@@ -34,7 +34,7 @@ const Layout = ({ banner, children }: ILayoutProps) => {
   return (
     <>
       <GlobalStyle />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={data.site.siteMetadata.title} banner={banner} />
       <Main>{children}</Main>
     </>
   )

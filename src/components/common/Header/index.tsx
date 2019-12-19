@@ -131,6 +131,7 @@ const StyledMenuIcon = styled(MenuIcon)<IShowBackgroundProps>`
 
 export interface IHeaderProps {
   siteTitle?: string
+  banner?: string
 }
 
 export default ({ siteTitle = `` }: IHeaderProps) => {
