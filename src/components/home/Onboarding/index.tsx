@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { useStaticQuery, graphql } from "gatsby"
-import GatsbyImage from "gatsby-image"
+import GatsbyImage, { FluidObject } from "gatsby-image"
 
 import colors from "../../../constants/colors"
 import breakpoints from "../../../constants/breakpoints"
@@ -122,50 +121,42 @@ const SocialLinksDivider = styled.div`
   }
 `
 
-const Onboarding = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "landing.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1080) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
-
-  return (
-    <Container>
-      <Image fluid={data.placeholderImage.childImageSharp.fluid} />
-      <ImageOverlay />
-      <Content>
-        <Title>Whittier Pony</Title>
-        <Subtitle>Real Baseball</Subtitle>
-      </Content>
-      <ScrollHint>
-        <ScrollHintText>Play Ball</ScrollHintText>
-        <ScrollHintLine />
-      </ScrollHint>
-      <SocialLinks>
-        <a
-          href="https://www.instagram.com/whittierpony/"
-          target="__blank"
-          aria-label="Open Whittier PONY Instragram page"
-        >
-          <InstagramLink />
-        </a>
-        <SocialLinksDivider />
-        <a
-          href="https://www.facebook.com/WhittierPony/"
-          target="__blank"
-          aria-label="Open Whittier PONY Facebook page"
-        >
-          <FacebookLink />
-        </a>
-      </SocialLinks>
-    </Container>
-  )
+interface IProps {
+  title: string
+  subtitle: string
+  image: FluidObject
 }
+
+const Onboarding = (props: IProps) => (
+  <Container>
+    <Image fluid={props.image} />
+    <ImageOverlay />
+    <Content>
+      <Title>{props.title}</Title>
+      <Subtitle>{props.subtitle}</Subtitle>
+    </Content>
+    <ScrollHint>
+      <ScrollHintText>Play Ball</ScrollHintText>
+      <ScrollHintLine />
+    </ScrollHint>
+    <SocialLinks>
+      <a
+        href="https://www.instagram.com/whittierpony/"
+        target="__blank"
+        aria-label="Open Whittier PONY Instragram page"
+      >
+        <InstagramLink />
+      </a>
+      <SocialLinksDivider />
+      <a
+        href="https://www.facebook.com/WhittierPony/"
+        target="__blank"
+        aria-label="Open Whittier PONY Facebook page"
+      >
+        <FacebookLink />
+      </a>
+    </SocialLinks>
+  </Container>
+)
 
 export default Onboarding

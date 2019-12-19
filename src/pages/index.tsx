@@ -9,16 +9,17 @@ import News from "../components/home/News"
 
 export const query = graphql`
   query HomePage {
-    allMarkdownRemark {
-      edges {
-        node {
-          id
-          html
-          excerpt
-          frontmatter {
-            type
-            title
-            date
+    file(sourceInstanceName: { eq: "pages" }, name: { eq: "home" }) {
+      childMarkdownRemark {
+        frontmatter {
+          title
+          subtitle
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1080) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
           }
         }
       }
@@ -26,13 +27,19 @@ export const query = graphql`
   }
 `
 
+const parseQuery = (data: object) =>
+  get(data, "file.childMarkdownRemark.frontmatter")
+
 const IndexPage = ({ data }: { data: object }) => {
-  const edges = get(data, "allMarkdownRemark.edges")
-  console.log(edges)
+  const result = parseQuery(data)
+  const title = get(result, "title", "")
+  const subtitle = get(result, "subtitle", "")
+  const image = get(result, "image.childImageSharp.fluid")
+
   return (
     <Layout>
       <SEO title="Home" />
-      <Onboarding />
+      <Onboarding title={title} subtitle={subtitle} image={image} />
       <News />
     </Layout>
   )

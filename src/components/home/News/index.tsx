@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import colors from "../../../constants/colors"
 import breakpoints from "../../../constants/breakpoints"
+import { graphql, useStaticQuery } from "gatsby"
 
 const Container = styled.div`
   position: relative;
@@ -19,6 +20,23 @@ const Container = styled.div`
 `
 
 const News = () => {
+  const data = useStaticQuery(graphql`
+    query News {
+      allFile(filter: { sourceInstanceName: { eq: "posts" } }) {
+        edges {
+          node {
+            childMarkdownRemark {
+              frontmatter {
+                title
+              }
+              html
+            }
+          }
+        }
+      }
+    }
+  `)
+  console.log(data)
   return <Container />
 }
 
