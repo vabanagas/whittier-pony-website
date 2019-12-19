@@ -20,7 +20,7 @@ collections:
               label: "Banner",
               name: "banner",
               widget: "string",
-              required: "false",
+              required: false,
               hint: "This message will be displayed as banner at top of website",
               pattern: [".{0,80}", "Must be less than 80 characters"],
             }
