@@ -74,11 +74,7 @@ const NavLink = styled(GatsbyLink)`
   }
 `
 
-interface IMenuProps {
-  "data-is-open": boolean
-}
-
-const StyledMenuIcon = styled(MenuIcon)<IMenuProps>`
+const StyledMenuIcon = styled(MenuIcon)<{ "data-is-open": boolean }>`
   cursor: pointer;
   color: ${colors.offWhite};
 
@@ -104,14 +100,14 @@ const StyledMenuIcon = styled(MenuIcon)<IMenuProps>`
   }
 `
 
-interface IProps extends ReactModal.Props {
+export interface IMenuProps extends ReactModal.Props {
   className?: string
   modalClassName?: string
 }
 
 Modal.setAppElement("#___gatsby")
 
-const ModalAdapter = ({ className, modalClassName, ...props }: IProps) => {
+const ModalAdapter = ({ className, modalClassName, ...props }: IMenuProps) => {
   return (
     <Modal
       className={modalClassName}

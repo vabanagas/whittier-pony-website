@@ -3,11 +3,11 @@ import colors from "../../../constants/colors"
 import typography from "../../../constants/typography"
 import durations from "../../../constants/durations"
 
-interface ILink {
+export interface ILinkProps {
   dark?: boolean
 }
 
-const Link = styled.a<ILink>`
+const Link = styled.a<ILinkProps>`
   ${typography.Button}
   padding: 15px 36px;
   text-align: center;

@@ -121,13 +121,13 @@ const SocialLinksDivider = styled.div`
   }
 `
 
-interface IProps {
+export interface IOnboardingProps {
   title: string
   subtitle: string
   image: FluidObject
 }
 
-const Onboarding = (props: IProps) => (
+const Onboarding = (props: IOnboardingProps) => (
   <Container>
     <Image fluid={props.image} />
     <ImageOverlay />

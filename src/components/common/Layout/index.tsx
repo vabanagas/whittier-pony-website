@@ -15,11 +15,12 @@ import GlobalStyle from "../../../styles/GlobalStyle"
 
 const Main = styled.main``
 
-interface ILayout {
+export interface ILayoutProps {
+  banner?: string
   children: React.ReactNode
 }
 
-const Layout = ({ children }: ILayout) => {
+const Layout = ({ banner, children }: ILayoutProps) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

@@ -3,11 +3,11 @@ import colors from "../../../constants/colors"
 import typography from "../../../constants/typography"
 import durations from "../../../constants/durations"
 
-interface IButton {
+export interface IButtonProps {
   dark?: boolean
 }
 
-const Button = styled.button<IButton>`
+const Button = styled.button<IButtonProps>`
   ${typography.Button}
   height: 56px;
   padding: 0 36px;

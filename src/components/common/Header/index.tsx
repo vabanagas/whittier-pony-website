@@ -129,11 +129,11 @@ const StyledMenuIcon = styled(MenuIcon)<IShowBackgroundProps>`
   z-index: 1011;
 `
 
-interface IHeader {
+export interface IHeaderProps {
   siteTitle?: string
 }
 
-export default ({ siteTitle = `` }: IHeader) => {
+export default ({ siteTitle = `` }: IHeaderProps) => {
   const [showMenu, setShowMenu] = useState(false)
   const [showBackground, setShowBackground] = useState(false)
   const data = useStaticQuery(graphql`

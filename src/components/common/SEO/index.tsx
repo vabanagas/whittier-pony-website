@@ -9,12 +9,12 @@ import React from "react"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-interface ISEO {
+export interface ISEOProps {
   description?: string
   title: string
 }
 
-function SEO({ description = ``, title }: ISEO) {
+function SEO({ description = ``, title }: ISEOProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
