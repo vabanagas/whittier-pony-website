@@ -16,9 +16,34 @@ interface IShowBackgroundProps {
   "data-show-background": boolean
 }
 
-const Header = styled.header`
+interface IShowBannerProps {
+  "data-show-banner": boolean
+}
+
+const Banner = styled.div<IShowBannerProps>`
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  height: ${values.BANNER_HEIGHT}px;
+  z-index: 1000;
+  display: ${props => (props[`data-show-banner`] ? "flex" : "none")};
+  align-items: center;
+  justify-content: center;
+  ${typography.SmallCaps};
+  background-color: ${colors.blue};
+  color: ${colors.offWhite};
+  padding: 0 24px;
+
+  @media ${breakpoints.desktop} {
+    padding: 0 48px;
+  }
+`
+
+const Header = styled.header<IShowBannerProps>`
+  position: fixed;
+  top: ${props =>
+    props[`data-show-banner`] ? `${values.BANNER_HEIGHT}px` : 0};
   left: 0;
   right: 0;
   height: ${values.HEADER_HEIGHT}px;
@@ -130,13 +155,15 @@ const StyledMenuIcon = styled(MenuIcon)<IShowBackgroundProps>`
 `
 
 export interface IHeaderProps {
-  siteTitle?: string
   banner?: string
+  siteTitle?: string
 }
 
-export default ({ siteTitle = `` }: IHeaderProps) => {
+export default ({ banner, siteTitle = `` }: IHeaderProps) => {
   const [showMenu, setShowMenu] = useState(false)
   const [showBackground, setShowBackground] = useState(false)
+  const showBanner = banner !== undefined && banner.length > 0
+
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "pony-logo.png" }) {
@@ -179,43 +206,46 @@ export default ({ siteTitle = `` }: IHeaderProps) => {
   }
 
   return (
-    <Header>
-      <HeaderBackground data-show-background={showBackground} />
-      <HeaderContent>
-        <GatsbyLink to="/">
-          <Logo
-            fluid={data.placeholderImage.childImageSharp.fluid}
-            alt={siteTitle}
-          />
-        </GatsbyLink>
-        <Content>
-          <NavLink to="/about" data-show-background={showBackground}>
-            About
-            <NavLinkIndicator data-show-background={showBackground} />
-          </NavLink>
-          <NavLink to="/divisions" data-show-background={showBackground}>
-            Divisions
-            <NavLinkIndicator data-show-background={showBackground} />
-          </NavLink>
-          <NavLink to="/schedules" data-show-background={showBackground}>
-            Schedules
-            <NavLinkIndicator data-show-background={showBackground} />
-          </NavLink>
-          <RegisterButton
-            href="https://wpb.sportssignup.com/site/"
-            target="__blank"
-            dark={showBackground}
-          >
-            Register
-          </RegisterButton>
-          <StyledSearchIcon data-show-background={showBackground} />
-          <StyledMenuIcon
-            data-show-background={showBackground}
-            onClick={openMenu}
-          />
-        </Content>
-      </HeaderContent>
-      <Menu isOpen={showMenu} onRequestClose={closeMenu} />
-    </Header>
+    <>
+      <Banner data-show-banner={showBanner}>{banner}</Banner>
+      <Header data-show-banner={showBanner}>
+        <HeaderBackground data-show-background={showBackground} />
+        <HeaderContent>
+          <GatsbyLink to="/">
+            <Logo
+              fluid={data.placeholderImage.childImageSharp.fluid}
+              alt={siteTitle}
+            />
+          </GatsbyLink>
+          <Content>
+            <NavLink to="/about" data-show-background={showBackground}>
+              About
+              <NavLinkIndicator data-show-background={showBackground} />
+            </NavLink>
+            <NavLink to="/divisions" data-show-background={showBackground}>
+              Divisions
+              <NavLinkIndicator data-show-background={showBackground} />
+            </NavLink>
+            <NavLink to="/schedules" data-show-background={showBackground}>
+              Schedules
+              <NavLinkIndicator data-show-background={showBackground} />
+            </NavLink>
+            <RegisterButton
+              href="https://wpb.sportssignup.com/site/"
+              target="__blank"
+              dark={showBackground}
+            >
+              Register
+            </RegisterButton>
+            <StyledSearchIcon data-show-background={showBackground} />
+            <StyledMenuIcon
+              data-show-background={showBackground}
+              onClick={openMenu}
+            />
+          </Content>
+        </HeaderContent>
+        <Menu isOpen={showMenu} onRequestClose={closeMenu} />
+      </Header>
+    </>
   )
 }

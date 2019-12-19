@@ -14,6 +14,7 @@ export const query = graphql`
         frontmatter {
           title
           subtitle
+          banner
           image {
             childImageSharp {
               fluid(maxWidth: 1080) {
@@ -34,10 +35,11 @@ const IndexPage = ({ data }: { data: object }) => {
   const result = parseQuery(data)
   const title = get(result, "title", "")
   const subtitle = get(result, "subtitle", "")
+  const banner = get(result, "banner", "")
   const image = get(result, "image.childImageSharp.fluid")
 
   return (
-    <Layout>
+    <Layout banner={banner}>
       <SEO title="Home" />
       <Onboarding title={title} subtitle={subtitle} image={image} />
       <News />
