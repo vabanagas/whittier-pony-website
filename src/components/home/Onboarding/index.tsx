@@ -8,7 +8,6 @@ import breakpoints from "../../../constants/breakpoints"
 import typography from "../../../constants/typography"
 import FacebookIcon from "../../../icons/FacebookIcon"
 import InstagramIcon from "../../../icons/InstagramIcon"
-import Link from "../../common/Link"
 
 const Container = styled.div`
   position: relative;

@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { get } from "lodash"
 
 import Layout from "../components/common/Layout"
 import SEO from "../components/common/SEO"
@@ -11,7 +12,9 @@ export const query = graphql`
     allMarkdownRemark {
       edges {
         node {
+          id
           html
+          excerpt
           frontmatter {
             type
             title
@@ -24,6 +27,8 @@ export const query = graphql`
 `
 
 const IndexPage = ({ data }: { data: object }) => {
+  const edges = get(data, "allMarkdownRemark.edges")
+  console.log(edges)
   return (
     <Layout>
       <SEO title="Home" />
