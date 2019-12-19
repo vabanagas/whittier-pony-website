@@ -5,7 +5,7 @@ import SEO from "../components/common/SEO"
 
 const AboutPage = () => {
   return (
-    <Layout>
+    <Layout lightContent={true}>
       <SEO title="About" />
     </Layout>
   )

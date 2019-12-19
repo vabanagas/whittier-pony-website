@@ -17,10 +17,11 @@ const Main = styled.main``
 
 export interface ILayoutProps {
   banner?: string
+  lightContent?: boolean
   children: React.ReactNode
 }
 
-const Layout = ({ banner, children }: ILayoutProps) => {
+const Layout = ({ banner, lightContent, children }: ILayoutProps) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,7 +35,11 @@ const Layout = ({ banner, children }: ILayoutProps) => {
   return (
     <>
       <GlobalStyle />
-      <Header siteTitle={data.site.siteMetadata.title} banner={banner} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        banner={banner}
+        lightContent={lightContent}
+      />
       <Main>{children}</Main>
     </>
   )

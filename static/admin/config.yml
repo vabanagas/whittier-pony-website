@@ -21,7 +21,7 @@ collections:
               name: "banner",
               widget: "string",
               required: false,
-              hint: "This message will be displayed as a banner at the top of the website",
+              hint: "This message will be displayed as a banner at the top of the home page",
               pattern: [".{0,80}", "Must be less than 80 characters"],
             }
   - name: "post"

@@ -34,6 +34,7 @@ const Banner = styled.div<IShowBannerProps>`
   background-color: ${colors.blue};
   color: ${colors.offWhite};
   padding: 0 24px;
+  text-align: center;
 
   @media ${breakpoints.desktop} {
     padding: 0 48px;
@@ -157,9 +158,10 @@ const StyledMenuIcon = styled(MenuIcon)<IShowBackgroundProps>`
 export interface IHeaderProps {
   banner?: string
   siteTitle?: string
+  lightContent?: boolean
 }
 
-export default ({ banner, siteTitle = `` }: IHeaderProps) => {
+export default ({ banner, lightContent, siteTitle = `` }: IHeaderProps) => {
   const [showMenu, setShowMenu] = useState(false)
   const [showBackground, setShowBackground] = useState(false)
   const showBanner = banner !== undefined && banner.length > 0
@@ -209,7 +211,9 @@ export default ({ banner, siteTitle = `` }: IHeaderProps) => {
     <>
       <Banner data-show-banner={showBanner}>{banner}</Banner>
       <Header data-show-banner={showBanner}>
-        <HeaderBackground data-show-background={showBackground} />
+        <HeaderBackground
+          data-show-background={lightContent || showBackground}
+        />
         <HeaderContent>
           <GatsbyLink to="/">
             <Logo
@@ -218,28 +222,45 @@ export default ({ banner, siteTitle = `` }: IHeaderProps) => {
             />
           </GatsbyLink>
           <Content>
-            <NavLink to="/about" data-show-background={showBackground}>
+            <NavLink
+              to="/about"
+              data-show-background={lightContent || showBackground}
+            >
               About
-              <NavLinkIndicator data-show-background={showBackground} />
+              <NavLinkIndicator
+                data-show-background={lightContent || showBackground}
+              />
             </NavLink>
-            <NavLink to="/divisions" data-show-background={showBackground}>
+            <NavLink
+              to="/divisions"
+              data-show-background={lightContent || showBackground}
+            >
               Divisions
-              <NavLinkIndicator data-show-background={showBackground} />
+              <NavLinkIndicator
+                data-show-background={lightContent || showBackground}
+              />
             </NavLink>
-            <NavLink to="/schedules" data-show-background={showBackground}>
+            <NavLink
+              to="/schedules"
+              data-show-background={lightContent || showBackground}
+            >
               Schedules
-              <NavLinkIndicator data-show-background={showBackground} />
+              <NavLinkIndicator
+                data-show-background={lightContent || showBackground}
+              />
             </NavLink>
             <RegisterButton
               href="https://wpb.sportssignup.com/site/"
               target="__blank"
-              dark={showBackground}
+              dark={lightContent || showBackground}
             >
               Register
             </RegisterButton>
-            <StyledSearchIcon data-show-background={showBackground} />
+            <StyledSearchIcon
+              data-show-background={lightContent || showBackground}
+            />
             <StyledMenuIcon
-              data-show-background={showBackground}
+              data-show-background={lightContent || showBackground}
               onClick={openMenu}
             />
           </Content>
