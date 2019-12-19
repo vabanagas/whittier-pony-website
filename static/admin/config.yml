@@ -6,6 +6,16 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "content/pages/home.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
   - name: "post"
     label: "Post"
     folder: "content/posts"
@@ -14,12 +24,7 @@ collections:
     editor:
       preview: false
     fields:
-      - {
-          lable: "Type",
-          name: "type",
-          widget: "select",
-          options: ["Announcement", "News"],
-        }
+      - { label: "Type", name: "type", value: "Post" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
