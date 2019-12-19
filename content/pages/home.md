@@ -1,6 +1,7 @@
 ---
 title: Whittier Pony
 subtitle: Real Baseball
-image: ../../src/images/onboarding.png
-banner: Registraion for 2020 is now open!
+image: /images/onboarding.png
+banner: Online registration for Spring 2020 is now open!
 ---
+
