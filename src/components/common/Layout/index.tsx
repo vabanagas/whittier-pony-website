@@ -12,6 +12,7 @@ import "sanitize.css"
 
 import Header from "../Header"
 import GlobalStyle from "../../../styles/GlobalStyle"
+import Footer from "../Footer"
 
 const Main = styled.main``
 
@@ -41,6 +42,7 @@ const Layout = ({ banner, lightContent, children }: ILayoutProps) => {
         lightContent={lightContent}
       />
       <Main>{children}</Main>
+      <Footer />
     </>
   )
 }
