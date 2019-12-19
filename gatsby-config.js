@@ -9,7 +9,12 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms-paths`,
     `gatsby-transformer-sharp`,
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-plugin-netlify-cms-paths`],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

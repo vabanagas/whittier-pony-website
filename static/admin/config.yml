@@ -28,7 +28,6 @@ collections:
         name: "about"
         file: "content/pages/about.md"
         fields:
-          - { label: "Image", name: "image", widget: "image", required: false }
           - { label: "Body", name: "body", widget: "markdown" }
   - name: "post"
     label: "Post"
