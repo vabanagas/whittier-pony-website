@@ -22,15 +22,13 @@ const Container = styled.div`
 const News = () => {
   const data = useStaticQuery(graphql`
     query News {
-      allFile(filter: { sourceInstanceName: { eq: "posts" } }) {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/posts/" } }) {
         edges {
           node {
-            childMarkdownRemark {
-              frontmatter {
-                title
-              }
-              html
+            frontmatter {
+              title
             }
+            html
           }
         }
       }

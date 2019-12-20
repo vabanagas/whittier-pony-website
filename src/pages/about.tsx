@@ -8,15 +8,13 @@ import Body from "../components/about/Body"
 
 export const query = graphql`
   query AboutPage {
-    file(sourceInstanceName: { eq: "pages" }, name: { eq: "about" }) {
-      childMarkdownRemark {
-        html
-      }
+    markdownRemark(fileAbsolutePath: { regex: "/pages/about.md/" }) {
+      html
     }
   }
 `
 
-const parseQuery = (data: object) => get(data, "file.childMarkdownRemark.html")
+const parseQuery = (data: object) => get(data, "markdownRemark.html")
 
 const AboutPage = ({ data }: { data: object }) => {
   const result = parseQuery(data)

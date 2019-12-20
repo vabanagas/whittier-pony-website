@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import moment from "moment"
 
 import typography from "../../../constants/typography"
 import breakpoints from "../../../constants/breakpoints"
@@ -84,16 +85,34 @@ const Fields = styled.div`
   }
 `
 
-const Field = styled.div``
+const Field = styled.div`
+  width: 100%;
+
+  @media ${breakpoints.desktop} {
+    width: calc(2 / 12 * 100vw);
+  }
+`
 
 const FieldTitle = styled.div`
-  ${typography.BodyBold};
+  ${typography.SmallCaps};
   color: ${colors.offWhite};
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 `
 
 const FieldAddress = styled.div`
-  ${typography.Body};
+  ${typography.Subtext};
+  color: ${colors.offWhite};
+  white-space: pre-wrap;
+  margin-bottom: 32px;
+`
+
+const FieldNumberTitle = styled.div`
+  ${typography.SmallCaps};
+  color: ${colors.offWhite};
+`
+
+const FieldNumber = styled.a`
+  ${typography.Subtext};
   color: ${colors.offWhite};
 `
 
@@ -104,34 +123,34 @@ const Copyright = styled.div`
 
 const renderField = (field: object) => {
   const title = get(field, "title", "")
-  const address = get(field, "field", "")
+  const address = get(field, "address", "")
   const rainOutNumber = get(field, "rainOutNumber", "")
 
   return (
     <Field>
       <FieldTitle>{title}</FieldTitle>
       <FieldAddress>{address}</FieldAddress>
+      <FieldNumberTitle>Rain Out Number</FieldNumberTitle>
+      <FieldNumber href={`tel:${rainOutNumber}`}>{rainOutNumber}</FieldNumber>
     </Field>
   )
 }
 
 const parseFields = (data: object) =>
-  get(data, "allFile.edges", []).map((edge: object) =>
-    get(edge, "node.childMarkdownRemark.frontmatter")
+  get(data, "allMarkdownRemark.edges", []).map((edge: object) =>
+    get(edge, "node.frontmatter")
   )
 
 const Footer = () => {
   const data: object = useStaticQuery(graphql`
     query Footer {
-      allFile(filter: { sourceInstanceName: { eq: "fields" } }) {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/fields/" } }) {
         edges {
           node {
-            childMarkdownRemark {
-              frontmatter {
-                title
-                address
-                rainOutNumber
-              }
+            frontmatter {
+              title
+              address
+              rainOutNumber
             }
           }
         }
@@ -140,6 +159,7 @@ const Footer = () => {
   `)
 
   const fields: object[] = parseFields(data)
+  const year: string = moment().format("YYYY")
 
   return (
     <Container>
@@ -173,7 +193,7 @@ const Footer = () => {
         {fields.length > 0 && (
           <Fields>{fields.map(field => renderField(field))}</Fields>
         )}
-        <Copyright>© 2019 Whittier Pony. All Rights Reserved.</Copyright>
+        <Copyright>{`© ${year} Whittier Pony. All Rights Reserved.`}</Copyright>
       </Content>
     </Container>
   )
