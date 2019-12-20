@@ -6,6 +6,16 @@ media_folder: static/images
 public_folder: /images
 
 collections:
+  - name: "fields"
+    label: "Fields"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    files:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Address", name: "address", widget: "text" }
+      - { label: "Rain Out Number", name: "rainOutNumber", widget: "string" }
   - name: "pages"
     label: "Pages"
     delete: false
@@ -38,7 +48,6 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Type", name: "type", value: "Post" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }

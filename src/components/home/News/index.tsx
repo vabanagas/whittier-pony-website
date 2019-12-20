@@ -36,7 +36,6 @@ const News = () => {
       }
     }
   `)
-  console.log(data)
   return <Container />
 }
 

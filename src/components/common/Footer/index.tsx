@@ -6,6 +6,7 @@ import typography from "../../../constants/typography"
 import breakpoints from "../../../constants/breakpoints"
 import colors from "../../../constants/colors"
 import durations from "../../../constants/durations"
+import { get } from "lodash"
 
 const Container = styled.footer`
   width: 100vw;
@@ -69,7 +70,77 @@ const NavLink = styled(Link)`
   }
 `
 
+const Fields = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+
+  @media ${breakpoints.desktop} {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: calc(1 / 12 * 100vw);
+  }
+`
+
+const Field = styled.div``
+
+const FieldTitle = styled.div`
+  ${typography.BodyBold};
+  color: ${colors.offWhite};
+  margin-bottom: 8px;
+`
+
+const FieldAddress = styled.div`
+  ${typography.Body};
+  color: ${colors.offWhite};
+`
+
+const Copyright = styled.div`
+  ${typography.Subtext};
+  color: ${colors.offWhite};
+`
+
+const renderField = (field: object) => {
+  const title = get(field, "title", "")
+  const address = get(field, "field", "")
+  const rainOutNumber = get(field, "rainOutNumber", "")
+
+  return (
+    <Field>
+      <FieldTitle>{title}</FieldTitle>
+      <FieldAddress>{address}</FieldAddress>
+    </Field>
+  )
+}
+
+const parseFields = (data: object) =>
+  get(data, "allFile.edges", []).map((edge: object) =>
+    get(edge, "node.childMarkdownRemark.frontmatter")
+  )
+
 const Footer = () => {
+  const data: object = useStaticQuery(graphql`
+    query Footer {
+      allFile(filter: { sourceInstanceName: { eq: "fields" } }) {
+        edges {
+          node {
+            childMarkdownRemark {
+              frontmatter {
+                title
+                address
+                rainOutNumber
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const fields: object[] = parseFields(data)
+
   return (
     <Container>
       <Content>
@@ -99,6 +170,10 @@ const Footer = () => {
             <NavLinkIndicator />
           </NavLink>
         </NavLinks>
+        {fields.length > 0 && (
+          <Fields>{fields.map(field => renderField(field))}</Fields>
+        )}
+        <Copyright>© 2019 Whittier Pony. All Rights Reserved.</Copyright>
       </Content>
     </Container>
   )
