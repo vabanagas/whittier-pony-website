@@ -6,16 +6,17 @@ media_folder: static/images
 public_folder: /images
 
 collections:
-  - name: "fields"
-    label: "Fields"
+  - name: "post"
+    label: "Post"
+    folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
       preview: false
-    files:
+    fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Address", name: "address", widget: "text" }
-      - { label: "Rain Out Number", name: "rainOutNumber", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
   - name: "pages"
     label: "Pages"
     delete: false
@@ -40,14 +41,13 @@ collections:
         file: "content/pages/about.md"
         fields:
           - { label: "Body", name: "body", widget: "markdown" }
-  - name: "post"
-    label: "Post"
-    folder: "content/posts"
+  - name: "fields"
+    label: "Fields"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
       preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Address", name: "address", widget: "text" }
+      - { label: "Rain Out Number", name: "rainOutNumber", widget: "string" }
