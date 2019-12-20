@@ -8,11 +8,11 @@ public_folder: /images
 collections:
   - name: "pages"
     label: "Pages"
+    delete: false
     files:
       - label: "Home Page"
         name: "home"
         file: "content/pages/home.md"
-        delete: false
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -28,7 +28,6 @@ collections:
       - label: "About Page"
         name: "about"
         file: "content/pages/about.md"
-        delete: false
         fields:
           - { label: "Body", name: "body", widget: "markdown" }
   - name: "post"
