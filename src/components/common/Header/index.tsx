@@ -60,7 +60,7 @@ const HeaderBackground = styled.div<IShowBackgroundProps>`
   border-bottom: 1px solid ${colors.lightGray};
   background-color: ${colors.offWhite};
   opacity: ${props => (props[`data-show-background`] ? 1 : 0)};
-  transition: opacity ${durations.medium};
+  transition: opacity ${durations.medium} ease;
   will-change: opacity;
 `
 
@@ -91,7 +91,7 @@ const NavLinkIndicator = styled.div<IShowBackgroundProps>`
   transform-origin: bottom center;
   transform: scaleX(0);
   will-change: transform;
-  transition: transform ${durations.short};
+  transition: transform ${durations.short} ease;
 `
 
 const NavLink = styled(GatsbyLink)<IShowBackgroundProps>`
@@ -105,7 +105,7 @@ const NavLink = styled(GatsbyLink)<IShowBackgroundProps>`
       props[`data-show-background`] ? colors.black : colors.offWhite};
     text-decoration: none;
     margin-right: 46px;
-    transition: color ${durations.medium};
+    transition: color ${durations.medium} ease;
 
     &:hover {
       ${NavLinkIndicator} {
@@ -139,7 +139,7 @@ const StyledSearchIcon = styled(SearchIcon)<IShowBackgroundProps>`
   margin-right: 24px;
   color: ${props =>
     props[`data-show-background`] ? colors.black : colors.offWhite};
-  transition: stroke ${durations.medium};
+  transition: stroke ${durations.medium} ease;
 
   @media ${breakpoints.desktop} {
     margin-right: 32px;
@@ -151,7 +151,7 @@ const StyledMenuIcon = styled(MenuIcon)<IShowBackgroundProps>`
   cursor: pointer;
   color: ${props =>
     props[`data-show-background`] ? colors.black : colors.offWhite};
-  transition: stroke ${durations.medium};
+  transition: stroke ${durations.medium} ease;
   z-index: 1011;
 `
 

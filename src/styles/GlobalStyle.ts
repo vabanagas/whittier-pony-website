@@ -50,7 +50,8 @@ const GlobalStyle = createGlobalStyle`
 
   .ReactModal__Overlay {
       opacity: 0;
-      transition: opacity ${durations.long};
+      transition: opacity ${durations.long} ease;
+      will-change: opacity;
   }
 
   .ReactModal__Overlay--after-open{

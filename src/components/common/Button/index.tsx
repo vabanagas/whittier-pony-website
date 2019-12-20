@@ -16,8 +16,9 @@ const Button = styled.button<IButtonProps>`
   background-color: transparent;
   color: ${props => (props.dark ? colors.black : colors.offWhite)};
   outline-color: ${props => (props.dark ? colors.black : colors.offWhite)};
-  transition: color ${durations.short}, background-color ${durations.short},
-    outline-color ${durations.short};
+  transition: color ${durations.short} ease,
+    background-color ${durations.short} ease,
+    outline-color ${durations.short} ease;
   text-decoration: none;
 
   &:hover {

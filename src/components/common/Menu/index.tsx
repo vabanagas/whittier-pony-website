@@ -7,8 +7,8 @@ import colors from "../../../constants/colors"
 import breakpoints from "../../../constants/breakpoints"
 import values from "../../../constants/values"
 import typography from "../../../constants/typography"
-import MenuIcon from "../../../icons/MenuIcon"
 import durations from "../../../constants/durations"
+import CloseIcon from "../../../icons/CloseIcon"
 
 const Header = styled.div`
   position: absolute;
@@ -29,18 +29,18 @@ const Header = styled.div`
 
 const Content = styled.div`
   position: absolute;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
+  top: ${values.HEADER_HEIGHT}px;
   left: 0;
+  right: 0;
+  bottom: ${values.HEADER_HEIGHT}px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  padding: 24px;
+  padding: 0 24px;
 
   @media ${breakpoints.desktop} {
-    padding: calc(1 / 12 * 100vw);
+    padding: 0 calc(1 / 12 * 100vw);
   }
 `
 
@@ -53,7 +53,7 @@ const NavLinkIndicator = styled.div`
   transform-origin: bottom center;
   transform: scaleX(0);
   will-change: transform;
-  transition: transform ${durations.medium};
+  transition: transform ${durations.medium} ease;
 `
 
 const NavLink = styled(GatsbyLink)`
@@ -74,30 +74,9 @@ const NavLink = styled(GatsbyLink)`
   }
 `
 
-const StyledMenuIcon = styled(MenuIcon)<{ "data-is-open": boolean }>`
+const StyledCloseIcon = styled(CloseIcon)`
   cursor: pointer;
   color: ${colors.offWhite};
-
-  line {
-    transition: transform ${durations.long};
-    will-change: transform;
-  }
-
-  line:first-child {
-    transform-origin: center;
-    transform: ${props =>
-      props[`data-is-open`]
-        ? `rotate(45deg) translateY(5px)`
-        : `rotate(0) translateY(0)`};
-  }
-
-  line:last-child {
-    transform-origin: center;
-    transform: ${props =>
-      props[`data-is-open`]
-        ? `rotate(-45deg) scaleX(1.5) translateY(-4px) translateX(4px)`
-        : `rotate(0) scaleX(1) translateY(0) translateX(0)`};
-  }
 `
 
 export interface IMenuProps extends ReactModal.Props {
@@ -142,10 +121,7 @@ const ModalAdapter = ({ className, modalClassName, ...props }: IMenuProps) => {
         </NavLink>
       </Content>
       <Header>
-        <StyledMenuIcon
-          onClick={props.onRequestClose}
-          data-is-open={props.isOpen}
-        />
+        <StyledCloseIcon onClick={props.onRequestClose} />
       </Header>
     </Modal>
   )
