@@ -1,13 +1,33 @@
 import React from "react"
+import styled from "styled-components"
 
 import Layout from "../components/common/Layout"
 import SEO from "../components/common/SEO"
+import values from "../constants/values"
+import breakpoints from "../constants/breakpoints"
+
+const Container = styled.div`
+  position: relative;
+  width: 100vw;
+  padding-top: ${values.HEADER_HEIGHT}px;
+`
+
+const Content = styled.div`
+  padding: 24px;
+
+  @media ${breakpoints.desktop} {
+    padding: calc(1 / 12 * 100vw);
+  }
+`
 
 const NotFoundPage = () => (
   <Layout lightContent={true}>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Container>
+      <Content>
+        <p>You just hit a route that doesn't exist... the sadness.</p>
+      </Content>
+    </Container>
   </Layout>
 )
 

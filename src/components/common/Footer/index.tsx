@@ -56,10 +56,9 @@ const NavLink = styled(Link)`
   color: ${colors.offWhite};
   text-decoration: none;
   margin-bottom: 24px;
+  width: fit-content;
 
   @media ${breakpoints.desktop} {
-    ${typography.H3};
-    color: ${colors.offWhite};
     margin-bottom: 0;
     margin-right: 46px;
   }
@@ -87,9 +86,11 @@ const Fields = styled.div`
 
 const Field = styled.div`
   width: 100%;
+  margin-bottom: 24px;
 
   @media ${breakpoints.desktop} {
     width: calc(2 / 12 * 100vw);
+    margin-bottom: 0;
   }
 `
 
@@ -103,7 +104,11 @@ const FieldAddress = styled.div`
   ${typography.Subtext};
   color: ${colors.offWhite};
   white-space: pre-wrap;
-  margin-bottom: 32px;
+  margin-bottom: 8px;
+
+  @media ${breakpoints.desktop} {
+    margin-bottom: 32px;
+  }
 `
 
 const FieldNumberTitle = styled.div`
@@ -127,7 +132,7 @@ const renderField = (field: object) => {
   const rainOutNumber = get(field, "rainOutNumber", "")
 
   return (
-    <Field>
+    <Field key={title}>
       <FieldTitle>{title}</FieldTitle>
       <FieldAddress>{address}</FieldAddress>
       <FieldNumberTitle>Rain Out Number</FieldNumberTitle>
