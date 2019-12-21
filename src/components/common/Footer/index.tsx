@@ -8,15 +8,10 @@ import breakpoints from "../../../constants/breakpoints"
 import colors from "../../../constants/colors"
 import durations from "../../../constants/durations"
 import { get } from "lodash"
+import Block from "../Block"
 
-const Container = styled.footer`
-  width: 100vw;
+const Container = styled(Block)`
   background-color: ${colors.black};
-  padding: 24px;
-
-  @media ${breakpoints.desktop} {
-    padding: calc(1 / 12 * 100vw);
-  }
 `
 
 const Content = styled.div`

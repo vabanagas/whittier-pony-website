@@ -1,14 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
-import breakpoints from "../../../constants/breakpoints"
 import values from "../../../constants/values"
+import Block from "../../common/Block"
 
-const Container = styled.div`
-  position: relative;
-  min-height: 100vh;
-  width: 100vw;
-  padding-top: ${values.HEADER_HEIGHT}px;
+const Container = styled(Block)`
+  margin-top: ${values.HEADER_HEIGHT}px;
 `
 
 const Content = styled.div`
@@ -16,11 +13,6 @@ const Content = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-
-  @media ${breakpoints.desktop} {
-    padding: calc(1 / 12 * 100vw);
-  }
 `
 
 export interface IBodyProps {

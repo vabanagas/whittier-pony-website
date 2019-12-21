@@ -1,25 +1,46 @@
 import React from "react"
 import styled from "styled-components"
+import { get, slice } from "lodash"
+import { graphql, useStaticQuery } from "gatsby"
 
 import colors from "../../../constants/colors"
 import breakpoints from "../../../constants/breakpoints"
-import { graphql, useStaticQuery } from "gatsby"
+import { parseAllMarkdownRemark } from "../../../utils"
+import Card from "../../common/Card"
+import moment, { Moment } from "moment"
+import Block from "../../common/Block"
 
-const Container = styled.div`
-  position: relative;
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
+const Container = styled(Block)`
   flex-direction: column;
   background-color: ${colors.offWhite};
-  padding: 24px;
 
-  @media ${breakpoints.desktop} {
-    padding: calc(1 / 12 * 100vw);
+  @media ${breakpoints.tablet} {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `
 
-const News = () => {
+const renderPost = (post: object) => {
+  const title: string = get(post, "frontmatter.title", "")
+  const date: Moment = moment(get(post, "frontmatter.date"))
+  const excerpt: string = get(post, "excerpt", "")
+  const details: string = get(post, "frontmatter.title", "")
+  return (
+    <Card
+      key={title}
+      title={title}
+      excerpt={excerpt}
+      date={date}
+      details={details}
+    />
+  )
+}
+
+export interface INewsProps {
+  limit?: number
+}
+
+const News = (props: INewsProps) => {
   const data = useStaticQuery(graphql`
     query News {
       allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/posts/" } }) {
@@ -27,14 +48,19 @@ const News = () => {
           node {
             frontmatter {
               title
+              date
             }
             html
+            excerpt
           }
         }
       }
     }
   `)
-  return <Container />
+
+  const posts = slice(parseAllMarkdownRemark(data), 0, props.limit)
+
+  return <Container>{posts.map(renderPost)}</Container>
 }
 
 export default News
