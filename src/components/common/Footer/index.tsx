@@ -4,7 +4,7 @@ import styled from "styled-components"
 import moment from "moment"
 
 import typography from "../../../constants/typography"
-import breakpoints from "../../../constants/breakpoints"
+import breakpoints from "../../../constants/media"
 import colors from "../../../constants/colors"
 import durations from "../../../constants/durations"
 import { get } from "lodash"
@@ -25,7 +25,7 @@ const NavLinks = styled.div`
   flex-direction: column;
   margin-bottom: 24px;
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
@@ -53,7 +53,7 @@ const NavLink = styled(Link)`
   margin-bottom: 24px;
   width: fit-content;
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     margin-bottom: 0;
     margin-right: 46px;
   }
@@ -71,7 +71,7 @@ const Fields = styled.div`
   flex-direction: column;
   margin-bottom: 24px;
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
@@ -83,7 +83,7 @@ const Field = styled.div`
   width: 100%;
   margin-bottom: 24px;
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     width: calc(2 / 12 * 100vw);
     margin-bottom: 0;
   }
@@ -101,7 +101,7 @@ const FieldAddress = styled.div`
   white-space: pre-wrap;
   margin-bottom: 8px;
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     margin-bottom: 32px;
   }
 `

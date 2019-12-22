@@ -4,7 +4,7 @@ import Modal from "react-modal"
 import { Link as GatsbyLink } from "gatsby"
 
 import colors from "../../../constants/colors"
-import breakpoints from "../../../constants/breakpoints"
+import breakpoints from "../../../constants/media"
 import values from "../../../constants/values"
 import typography from "../../../constants/typography"
 import durations from "../../../constants/durations"
@@ -22,7 +22,7 @@ const Header = styled.div`
   justify-content: flex-end;
   padding: 0 24px;
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     padding: 0 48px;
   }
 `
@@ -39,7 +39,7 @@ const Content = styled.div`
   align-items: flex-start;
   padding: 0 24px;
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     padding: 0 calc(1 / 12 * 100vw);
   }
 `
@@ -62,7 +62,7 @@ const NavLink = styled(GatsbyLink)`
   color: ${colors.offWhite};
   text-decoration: none;
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     ${typography.H1};
     color: ${colors.offWhite};
   }

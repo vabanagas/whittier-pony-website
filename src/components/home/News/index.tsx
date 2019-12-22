@@ -4,7 +4,7 @@ import { get, slice } from "lodash"
 import { graphql, useStaticQuery } from "gatsby"
 
 import colors from "../../../constants/colors"
-import breakpoints from "../../../constants/breakpoints"
+import breakpoints from "../../../constants/media"
 import { parseAllMarkdownRemark } from "../../../utils"
 import Card from "../../common/Card"
 import moment, { Moment } from "moment"
@@ -14,7 +14,7 @@ const Container = styled(Block)`
   flex-direction: column;
   background-color: ${colors.offWhite};
 
-  @media ${breakpoints.tablet} {
+  ${breakpoints.tablet} {
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -24,7 +24,7 @@ const renderPost = (post: object) => {
   const title: string = get(post, "frontmatter.title", "")
   const date: Moment = moment(get(post, "frontmatter.date"))
   const excerpt: string = get(post, "excerpt", "")
-  const details: string = get(post, "frontmatter.title", "")
+  const details: string = get(post, "html", "")
   return (
     <Card
       key={title}

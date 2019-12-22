@@ -1,22 +1,22 @@
 import styled from "styled-components"
-import breakpoints from "../../../constants/breakpoints"
+import breakpoints from "../../../constants/media"
 
 const Block = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100vw;
-  padding: 24px;
+  padding: 48px 24px;
 
-  @media ${breakpoints.tablet} {
+  ${breakpoints.tablet} {
     padding: calc(1 / 12 * 100vw);
   }
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     padding: calc(1 / 12 * 100vw);
   }
 
-  @media ${breakpoints.largeDesktop} {
+  ${breakpoints.largeDesktop} {
     padding: calc(1 / 12 * 100vw) calc(2 / 12 * 100vw);
   }
 `

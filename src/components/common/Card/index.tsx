@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import breakpoints from "../../../constants/breakpoints"
+import breakpoints from "../../../constants/media"
 import typography from "../../../constants/typography"
 import colors from "../../../constants/colors"
 import { Moment } from "moment"
 import ArrowIcon from "../../../icons/ArrowIcon"
 import durations from "../../../constants/durations"
+import Modal from "../Modal"
 
 const Container = styled.div`
   cursor: pointer;
@@ -19,19 +20,19 @@ const Container = styled.div`
   background-color: ${colors.offWhite};
   margin: 24px 0;
 
-  @media ${breakpoints.tablet} {
+  ${breakpoints.tablet} {
     width: calc(4.5 / 12 * 100vw);
     margin: calc(0.25 / 12 * 100vw);
     padding: calc(0.5 / 12 * 100vw);
   }
 
-  @media ${breakpoints.desktop} {
+  ${breakpoints.desktop} {
     width: calc(3 / 12 * 100vw);
     margin: calc(0.333 / 2 / 12 * 100vw);
     padding: calc(0.25 / 12 * 100vw);
   }
 
-  @media ${breakpoints.largeDesktop} {
+  ${breakpoints.largeDesktop} {
     width: calc(1.75 / 12 * 100vw);
     margin: calc(0.25 / 2 / 12 * 100vw);
     padding: calc(0.25 / 12 * 100vw);
@@ -80,6 +81,8 @@ const Arrow = styled(ArrowIcon)`
   }
 `
 
+const ModalContent = styled.div``
+
 export interface ICardProps {
   title: string
   date: Moment
@@ -91,17 +94,27 @@ const Card = (props: ICardProps) => {
   const [showDetails, setShowDetails] = useState(false)
 
   const onClickCard = () => setShowDetails(true)
+  const onRequestClose = () => setShowDetails(false)
 
   return (
-    <Container onClick={onClickCard}>
-      <Title>{props.title}</Title>
-      <Excerpt>{props.excerpt}</Excerpt>
-      <Date>{props.date.format("MMMM D, YYYY")}</Date>
-      <Footer>
-        <More>More Details</More>
-        <Arrow />
-      </Footer>
-    </Container>
+    <>
+      <Container onClick={onClickCard}>
+        <Title>{props.title}</Title>
+        <Excerpt>{props.excerpt}</Excerpt>
+        <Date>{props.date.format("MMMM D, YYYY")}</Date>
+        <Footer>
+          <More>More Details</More>
+          <Arrow />
+        </Footer>
+      </Container>
+      <Modal
+        isOpen={showDetails}
+        onRequestClose={onRequestClose}
+        contentLabel={props.title}
+      >
+        <ModalContent dangerouslySetInnerHTML={{ __html: props.details }} />
+      </Modal>
+    </>
   )
 }
 
