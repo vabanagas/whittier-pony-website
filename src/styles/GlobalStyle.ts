@@ -2,41 +2,41 @@ import { createGlobalStyle } from "styled-components"
 import typography from "../constants/typography"
 import "../fonts/stylesheet.css"
 import durations from "../constants/durations"
-import breakpoints from "../constants/media"
+import media from "../constants/media"
 import colors from "../constants/colors"
 
 const GlobalStyle = createGlobalStyle`
   h1 {
     ${typography.H2}
-    ${breakpoints.desktop} {
+    ${media.desktop} {
       ${typography.H1}
     }
   }
 
   h2 {
     ${typography.H3}
-    ${breakpoints.desktop} {
+    ${media.desktop} {
       ${typography.H2}
     }
   }
 
   h3 {
     ${typography.H4}
-    ${breakpoints.desktop} {
+    ${media.desktop} {
       ${typography.H3}
     }
   }
 
   h4 {
     ${typography.H5}
-    ${breakpoints.desktop} {
+    ${media.desktop} {
       ${typography.H4}
     }
   }
 
   h5 {
     ${typography.H6}
-    ${breakpoints.desktop} {
+    ${media.desktop} {
       ${typography.H5}
     }
   }

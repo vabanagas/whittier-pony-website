@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Layout from "../components/common/Layout"
 import SEO from "../components/common/SEO"
 import values from "../constants/values"
-import breakpoints from "../constants/media"
+import media from "../constants/media"
 
 const Container = styled.div`
   position: relative;
@@ -15,7 +15,7 @@ const Container = styled.div`
 const Content = styled.div`
   padding: 24px;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     padding: calc(1 / 12 * 100vw);
   }
 `

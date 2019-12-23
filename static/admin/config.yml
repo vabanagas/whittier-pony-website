@@ -41,8 +41,19 @@ collections:
         file: "content/pages/about.md"
         fields:
           - { label: "Body", name: "body", widget: "markdown" }
-  - name: "locations"
-    label: "Locations"
+  - name: "sponsor"
+    label: "Sponsor"
+    folder: "content/sponsors"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Logo", name: "logo", widget: "image" }
+      - { label: "URL", name: "url", widget: "string", required: false }
+  - name: "location"
+    label: "Location"
     folder: "content/locations"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"

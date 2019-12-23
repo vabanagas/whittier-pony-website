@@ -4,7 +4,7 @@ import { get, slice } from "lodash"
 import { graphql, useStaticQuery } from "gatsby"
 
 import colors from "../../../constants/colors"
-import breakpoints from "../../../constants/media"
+import media from "../../../constants/media"
 import { parseAllMarkdownRemark } from "../../../utils"
 import Card from "../../common/Card"
 import moment, { Moment } from "moment"
@@ -14,7 +14,7 @@ const Container = styled(Block)`
   flex-direction: column;
   background-color: ${colors.offWhite};
 
-  ${breakpoints.tablet} {
+  ${media.tablet} {
     flex-direction: row;
     flex-wrap: wrap;
   }

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import breakpoints from "../../../constants/media"
+import media from "../../../constants/media"
 
 const Block = styled.div`
   position: relative;
@@ -8,15 +8,15 @@ const Block = styled.div`
   width: 100vw;
   padding: 48px 24px;
 
-  ${breakpoints.tablet} {
+  ${media.tablet} {
     padding: calc(1 / 12 * 100vw);
   }
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     padding: calc(1 / 12 * 100vw);
   }
 
-  ${breakpoints.largeDesktop} {
+  ${media.largeDesktop} {
     padding: calc(1 / 12 * 100vw) calc(2 / 12 * 100vw);
   }
 `

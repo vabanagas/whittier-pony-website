@@ -3,7 +3,7 @@ import styled from "styled-components"
 import GatsbyImage, { FluidObject } from "gatsby-image"
 
 import colors from "../../../constants/colors"
-import breakpoints from "../../../constants/media"
+import media from "../../../constants/media"
 import typography from "../../../constants/typography"
 import FacebookIcon from "../../../icons/FacebookIcon"
 import InstagramIcon from "../../../icons/InstagramIcon"
@@ -43,7 +43,7 @@ const Content = styled.div`
   width: 100%;
   padding: 24px;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     padding: calc(1 / 12 * 100vw);
   }
 `
@@ -52,7 +52,7 @@ const Title = styled.div`
   ${typography.H1};
   color: ${colors.offWhite};
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     ${typography.Display};
     color: ${colors.offWhite};
   }
@@ -62,7 +62,7 @@ const Subtitle = styled.div`
   ${typography.H3};
   color: ${colors.lightGray};
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     ${typography.H1};
     color: ${colors.lightGray};
   }
@@ -73,7 +73,7 @@ const ScrollHint = styled.div`
   bottom: 0;
   left: 96px;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     left: calc(2 / 12 * 100vw);
   }
 `
@@ -96,7 +96,7 @@ const SocialLinks = styled.div`
   bottom: 48px;
   right: 24px;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     right: 48px;
   }
 `
@@ -115,7 +115,7 @@ const SocialLinksDivider = styled.div`
   width: 24px;
   margin: 32px 0;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     width: 32px;
     margin: 36px 0;
   }

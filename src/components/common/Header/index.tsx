@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import typography from "../../../constants/typography"
-import breakpoints from "../../../constants/media"
+import media from "../../../constants/media"
 import colors from "../../../constants/colors"
 import Link from "../Link"
 import MenuIcon from "../../../icons/MenuIcon"
@@ -36,7 +36,7 @@ const Banner = styled.div<IShowBannerProps>`
   padding: 0 24px;
   text-align: center;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     padding: 0 48px;
   }
 `
@@ -76,7 +76,7 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   padding: 0 24px;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     padding: 0 48px;
   }
 `
@@ -97,7 +97,7 @@ const NavLinkIndicator = styled.div<IShowBackgroundProps>`
 const NavLink = styled(GatsbyLink)<IShowBackgroundProps>`
   display: none;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     display: initial;
     position: relative;
     ${typography.H3};
@@ -118,7 +118,7 @@ const NavLink = styled(GatsbyLink)<IShowBackgroundProps>`
 const RegisterButton = styled(Link)`
   display: none;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     display: initial;
   }
 `
@@ -141,7 +141,7 @@ const StyledSearchIcon = styled(SearchIcon)<IShowBackgroundProps>`
     props[`data-show-background`] ? colors.black : colors.offWhite};
   transition: stroke ${durations.medium} ease;
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     margin-right: 32px;
     margin-left: 48px;
   }

@@ -8,6 +8,7 @@ import Onboarding from "../components/home/Onboarding"
 import News from "../components/home/News"
 import Navbar, { INavbarProps } from "../components/common/Navbar"
 import values from "../constants/values"
+import Sponsors from "../components/home/Sponsors"
 
 export const query = graphql`
   query HomePage {
@@ -80,6 +81,7 @@ const IndexPage = ({ data }: { data: object }) => {
       <Navbar {...NavbarProps} />
       {filter === "all" && <News limit={3} />}
       {filter === "news" && <News />}
+      <Sponsors />
     </Layout>
   )
 }

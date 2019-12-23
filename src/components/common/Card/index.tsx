@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import breakpoints from "../../../constants/media"
+import media from "../../../constants/media"
 import typography from "../../../constants/typography"
 import colors from "../../../constants/colors"
 import { Moment } from "moment"
@@ -19,19 +19,19 @@ const Container = styled.div`
   background-color: ${colors.offWhite};
   margin: 24px 0;
 
-  ${breakpoints.tablet} {
+  ${media.tablet} {
     width: calc(4.5 / 12 * 100vw);
     margin: calc(0.25 / 12 * 100vw);
     padding: calc(0.5 / 12 * 100vw);
   }
 
-  ${breakpoints.desktop} {
+  ${media.desktop} {
     width: calc(3 / 12 * 100vw);
     margin: calc(0.333 / 2 / 12 * 100vw);
     padding: calc(0.25 / 12 * 100vw);
   }
 
-  ${breakpoints.largeDesktop} {
+  ${media.largeDesktop} {
     width: calc(1.75 / 12 * 100vw);
     margin: calc(0.25 / 2 / 12 * 100vw);
     padding: calc(0.25 / 12 * 100vw);
