@@ -42,18 +42,18 @@ const Sponsor = styled.a`
   width: 100%;
   height: fit-content;
   text-decoration: none;
-  padding: 24px;
+  padding: 24px 64px;
   margin: 24px 0;
 
   ${media.tablet} {
-    width: calc(4.5 / 12 * 100vw);
-    margin: calc(0.25 / 12 * 100vw);
-    padding: calc(0.5 / 12 * 100vw);
+    width: calc(1.5 / 12 * 100vw);
+    margin: calc(0.25 / 2 / 12 * 100vw);
+    padding: calc(0.25 / 12 * 100vw);
   }
 
   ${media.desktop} {
-    width: calc(3 / 12 * 100vw);
-    margin: calc(0.333 / 2 / 12 * 100vw);
+    width: calc(1.5 / 12 * 100vw);
+    margin: calc(0.25 / 2 / 12 * 100vw);
     padding: calc(0.25 / 12 * 100vw);
   }
 
@@ -95,7 +95,7 @@ const Sponsors = () => {
     query Sponsors {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/sponsors/" } }
-        sort: { fields: [frontmatter___featured] }
+        sort: { fields: [frontmatter___featured, frontmatter___title] }
       ) {
         edges {
           node {
