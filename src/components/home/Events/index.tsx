@@ -6,7 +6,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import colors from "../../../constants/colors"
 import media from "../../../constants/media"
 import { parseAllMarkdownRemark } from "../../../utils"
-import Card from "../../common/Card"
+import Event from "../../common/Event"
 import moment, { Moment } from "moment"
 import Block from "../../common/Block"
 import typography from "../../../constants/typography"
@@ -36,55 +36,56 @@ const Content = styled.div`
   }
 `
 
-const renderPost = (post: object) => {
+const renderEvent = (post: object) => {
   const title: string = get(post, "frontmatter.title", "")
+  const description: string = get(post, "frontmatter.description", "")
   const date: Moment = moment(get(post, "frontmatter.date"))
-  const excerpt: string = get(post, "excerpt", "")
-  const details: string = get(post, "html", "")
+  const location: string = get(post, "frontmatter.location", "")
+
   return (
-    <Card
+    <Event
       key={title}
       title={title}
-      excerpt={excerpt}
+      description={description}
       date={date}
-      details={details}
+      location={location}
     />
   )
 }
 
-export interface INewsProps {
+export interface IEventsProps {
   limit?: number
 }
 
-const News = (props: INewsProps) => {
+const Events = (props: IEventsProps) => {
   const data = useStaticQuery(graphql`
-    query News {
+    query Events {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/posts/" } }
+        filter: { fileAbsolutePath: { regex: "/events/" } }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
           node {
             frontmatter {
               title
+              description
               date
+              location
             }
-            html
-            excerpt
           }
         }
       }
     }
   `)
 
-  const posts = slice(parseAllMarkdownRemark(data), 0, props.limit)
+  const events = slice(parseAllMarkdownRemark(data), 0, props.limit)
 
   return (
     <Container>
-      <Header>News</Header>
-      <Content>{posts.map(renderPost)}</Content>
+      <Header>Events</Header>
+      <Content>{events.map(renderEvent)}</Content>
     </Container>
   )
 }
 
-export default News
+export default Events

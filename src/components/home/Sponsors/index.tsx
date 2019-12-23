@@ -21,7 +21,7 @@ const Header = styled.div`
   margin-bottom: 48px;
 
   ${media.tablet} {
-    margin-bottom: calc(1 / 12 * 100vw);
+    margin-bottom: calc(0.5 / 12 * 100vw);
   }
 `
 

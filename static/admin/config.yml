@@ -17,6 +17,18 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: "event"
+    label: "Event"
+    folder: "content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { lable: "Description", name: "description", widget: "text" }
+      - { label: "Event Date", name: "date", widget: "datetime" }
+      - { label: "Location", name: "location", widget: "text" }
   - name: "pages"
     label: "Pages"
     delete: false
