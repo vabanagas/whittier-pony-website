@@ -1,5 +1,5 @@
 ---
-title: MGR. MEETING - TRYOUT PREP & PICK TEAM NAMES
+title: Manager Meeting - Tryout Prep & Pick Team Names
 description: |-
   6:00pm - Pinto & Mustang
   7:30pm - Bronco & Pony
