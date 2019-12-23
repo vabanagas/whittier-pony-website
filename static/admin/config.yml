@@ -52,6 +52,12 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Logo", name: "logo", widget: "image" }
       - { label: "URL", name: "url", widget: "string", required: false }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+        }
   - name: "location"
     label: "Location"
     folder: "content/locations"

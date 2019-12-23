@@ -90,7 +90,10 @@ const renderSponser = (sponsor: object) => {
 const Sponsors = () => {
   const data: object = useStaticQuery(graphql`
     query Sponsors {
-      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/sponsors/" } }) {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/sponsors/" } }
+        sort: { fields: [frontmatter___featured] }
+      ) {
         edges {
           node {
             frontmatter {

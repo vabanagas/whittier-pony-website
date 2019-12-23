@@ -43,7 +43,10 @@ export interface INewsProps {
 const News = (props: INewsProps) => {
   const data = useStaticQuery(graphql`
     query News {
-      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/posts/" } }) {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/posts/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
         edges {
           node {
             frontmatter {
