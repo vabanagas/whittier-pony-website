@@ -3,6 +3,7 @@ import typography from "../constants/typography"
 import "../fonts/stylesheet.css"
 import durations from "../constants/durations"
 import breakpoints from "../constants/media"
+import colors from "../constants/colors"
 
 const GlobalStyle = createGlobalStyle`
   h1 {
@@ -46,6 +47,7 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {
     ${typography.Body}
+    background-color: ${colors.offWhite}
   }
 
   .ReactModal__Overlay {
