@@ -144,7 +144,9 @@ const parseFields = (data: object) =>
 const Footer = () => {
   const data: object = useStaticQuery(graphql`
     query Footer {
-      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/fields/" } }) {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/locations/" } }
+      ) {
         edges {
           node {
             frontmatter {

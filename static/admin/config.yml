@@ -41,9 +41,9 @@ collections:
         file: "content/pages/about.md"
         fields:
           - { label: "Body", name: "body", widget: "markdown" }
-  - name: "fields"
-    label: "Fields"
-    folder: "content/fields"
+  - name: "locations"
+    label: "Locations"
+    folder: "content/locations"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
