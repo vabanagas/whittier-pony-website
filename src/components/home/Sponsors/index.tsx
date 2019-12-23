@@ -79,10 +79,13 @@ const renderSponser = (sponsor: object) => {
     "frontmatter.logo.childImageSharp.fluid"
   )
   const url: string = get(sponsor, "frontmatter.url", "")
+  const featured: boolean = get(sponsor, "frontmatter.featured", false)
   return (
     <Sponsor key={title} href={url} target="__blank">
       <SponsorTitle>{title}</SponsorTitle>
-      <SponsorImage fluid={image} />
+      {image !== undefined && featured === true && (
+        <SponsorImage fluid={image} />
+      )}
     </Sponsor>
   )
 }
@@ -106,6 +109,7 @@ const Sponsors = () => {
                 }
               }
               url
+              featured
             }
           }
         }
