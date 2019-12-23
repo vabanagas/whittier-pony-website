@@ -53,6 +53,7 @@ const Close = styled(CloseIcon)`
 `
 
 const Arrow = styled(ArrowIcon)`
+  cursor: pointer;
   height: 40px;
   width: 40px;
   transform: rotate(180deg);
