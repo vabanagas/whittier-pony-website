@@ -41,14 +41,19 @@ const Banner = styled.div<IShowBannerProps>`
   }
 `
 
-const Header = styled.header<IShowBannerProps>`
+const Header = styled.header<IShowBannerProps & IShowBackgroundProps>`
   position: fixed;
-  top: ${props =>
-    props[`data-show-banner`] ? `${values.BANNER_HEIGHT}px` : 0};
+  top: 0;
   left: 0;
   right: 0;
   height: ${values.HEADER_HEIGHT}px;
   z-index: 1000;
+  transform: ${props =>
+    props[`data-show-banner`] && !props[`data-show-background`]
+      ? `translateY(${values.BANNER_HEIGHT}px)`
+      : `translateY(0)`};
+  transition: transform ${durations.medium} ease;
+  will-change: transform;
 `
 
 const HeaderBackground = styled.div<IShowBackgroundProps>`
@@ -210,7 +215,10 @@ export default ({ banner, lightContent, siteTitle = `` }: IHeaderProps) => {
   return (
     <>
       <Banner data-show-banner={showBanner}>{banner}</Banner>
-      <Header data-show-banner={showBanner}>
+      <Header
+        data-show-banner={showBanner}
+        data-show-background={lightContent || showBackground}
+      >
         <HeaderBackground
           data-show-background={lightContent || showBackground}
         />

@@ -69,10 +69,7 @@ const IndexPage = ({ data }: { data: object }) => {
         onClick: () => setFilter("live"),
       },
     ],
-    fixedPosition:
-      banner !== undefined && banner.length > 0
-        ? values.BANNER_HEIGHT + values.HEADER_HEIGHT
-        : values.HEADER_HEIGHT,
+    fixedPosition: values.HEADER_HEIGHT,
   }
 
   return (
