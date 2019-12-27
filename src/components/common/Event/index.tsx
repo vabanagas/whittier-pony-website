@@ -71,13 +71,19 @@ export interface ICardProps {
 }
 
 const Card = (props: ICardProps) => {
+  const date = props.date.format("MMMM D, YYYY")
+  const time = props.date.format("h:mm A")
   return (
     <Container>
-      <Date>{props.date.format("MMMM D, YYYY")}</Date>
-      <Date>{props.date.format("h:mm A")}</Date>
+      <Date>{date}</Date>
+      {time !== "12:00 AM" && <Date>{time}</Date>}
       <Title>{props.title}</Title>
-      <Header>Description</Header>
-      <Description>{props.description}</Description>
+      {props.description && (
+        <>
+          <Header>Description</Header>
+          <Description>{props.description}</Description>
+        </>
+      )}
       <Header>Location</Header>
       <Location>{props.location}</Location>
     </Container>

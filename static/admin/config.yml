@@ -26,7 +26,12 @@ collections:
       preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { lable: "Description", name: "description", widget: "text" }
+      - {
+          lable: "Description",
+          name: "description",
+          widget: "text",
+          required: false,
+        }
       - { label: "Event Date", name: "date", widget: "datetime" }
       - { label: "Location", name: "location", widget: "text" }
   - name: "pages"
