@@ -1,5 +1,5 @@
 ---
-title: 2020 SPRING BASEBALL REGISTRATIONS HAVE OPENED - REGISTER 24/7!
+title: 2020 Spring Baseball Registrations Have Opened - Register 24/7!
 date: 2019-12-27T21:25:17.419Z
 ---
 As always, please register early to take full advantage of our split payment option and avoid our waiting list.
