@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Whittier PONY Baseball`,
     description: `PONY Baseball is designed to “Protect Our Nation’s Youth” by providing experiences in youth baseball that will help young people grow into healthier and happier adults.`,
+    url: "https://whittierpony.org",
     author: `@vabanagas`,
   },
   plugins: [

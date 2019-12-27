@@ -35,6 +35,7 @@ function SEO({ description = ``, title }: ISEOProps) {
     <Helmet
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      htmlAttributes={{ lang: "en" }}
       meta={[
         {
           name: `description`,
