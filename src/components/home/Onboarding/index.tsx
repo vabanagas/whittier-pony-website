@@ -7,6 +7,8 @@ import media from "../../../constants/media"
 import typography from "../../../constants/typography"
 import FacebookIcon from "../../../icons/FacebookIcon"
 import InstagramIcon from "../../../icons/InstagramIcon"
+import Link from "../../common/Link"
+import urls from "../../../constants/urls"
 
 const Container = styled.div`
   position: relative;
@@ -65,6 +67,15 @@ const Subtitle = styled.div`
   ${media.desktop} {
     ${typography.H1};
     color: ${colors.lightGray};
+  }
+`
+
+const RegisterButton = styled(Link)`
+  width: fit-content;
+  margin-top: 48px;
+
+  ${media.desktop} {
+    display: none;
   }
 `
 
@@ -134,6 +145,9 @@ const Onboarding = (props: IOnboardingProps) => (
     <Content>
       <Title>{props.title}</Title>
       <Subtitle>{props.subtitle}</Subtitle>
+      <RegisterButton href={urls.register} target="__blank">
+        Register
+      </RegisterButton>
     </Content>
     <ScrollHint>
       <ScrollHintText>Play Ball</ScrollHintText>
@@ -141,7 +155,7 @@ const Onboarding = (props: IOnboardingProps) => (
     </ScrollHint>
     <SocialLinks>
       <a
-        href="https://www.instagram.com/whittierpony/"
+        href={urls.instagram}
         target="__blank"
         aria-label="Open Whittier PONY Instragram page"
       >
@@ -149,7 +163,7 @@ const Onboarding = (props: IOnboardingProps) => (
       </a>
       <SocialLinksDivider />
       <a
-        href="https://www.facebook.com/WhittierPony/"
+        href={urls.facebook}
         target="__blank"
         aria-label="Open Whittier PONY Facebook page"
       >

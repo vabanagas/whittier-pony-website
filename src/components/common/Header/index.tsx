@@ -11,6 +11,7 @@ import SearchIcon from "../../../icons/SearchIcon"
 import values from "../../../constants/values"
 import durations from "../../../constants/durations"
 import Menu from "../Menu"
+import urls from "../../../constants/urls"
 
 interface IShowBackgroundProps {
   "data-show-background": boolean
@@ -264,7 +265,7 @@ export default ({ banner, lightContent, siteTitle = `` }: IHeaderProps) => {
               />
             </NavLink>
             <RegisterButton
-              href="https://wpb.sportssignup.com/site/"
+              href={urls.register}
               target="__blank"
               dark={lightContent || showBackground}
             >
