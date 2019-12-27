@@ -52,7 +52,10 @@ const Header = styled.header<IShowBannerProps & IShowBackgroundProps>`
     props[`data-show-banner`] && !props[`data-show-background`]
       ? `translateY(${values.BANNER_HEIGHT}px)`
       : `translateY(0)`};
-  transition: transform ${durations.medium} ease;
+  transition: ${props =>
+    props[`data-show-banner`] && !props[`data-show-background`]
+      ? `transform ${durations.medium} ease`
+      : `transform ${durations.medium} ease ${durations.short}`};
   will-change: transform;
 `
 
@@ -65,7 +68,10 @@ const HeaderBackground = styled.div<IShowBackgroundProps>`
   border-bottom: 1px solid ${colors.lightGray};
   background-color: ${colors.offWhite};
   opacity: ${props => (props[`data-show-background`] ? 1 : 0)};
-  transition: opacity ${durations.medium} ease;
+  transition: ${props =>
+    props[`data-show-background`]
+      ? `opacity ${durations.medium} ease`
+      : `opacity ${durations.medium} ease ${durations.short}`};
   will-change: opacity;
 `
 
