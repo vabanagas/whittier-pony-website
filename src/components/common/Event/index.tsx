@@ -35,7 +35,7 @@ const Container = styled.div`
 `
 
 const Title = styled.div`
-  ${typography.Body};
+  ${typography.BodyBold};
   color: ${colors.black};
   margin-top: 24px;
 `
@@ -59,18 +59,18 @@ const Location = styled.div`
 `
 
 const Date = styled.div`
-  ${typography.BodyBold};
+  ${typography.SmallCaps};
   color: ${colors.black};
 `
 
-export interface ICardProps {
+export interface IEventProps {
   title: string
   description: string
   date: Moment
   location: string
 }
 
-const Card = (props: ICardProps) => {
+const Event = (props: IEventProps) => {
   const date = props.date.format("MMMM D, YYYY")
   const time = props.date.format("h:mm A")
   return (
@@ -90,4 +90,4 @@ const Card = (props: ICardProps) => {
   )
 }
 
-export default Card
+export default Event

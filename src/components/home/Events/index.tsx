@@ -36,11 +36,17 @@ const Content = styled.div`
   }
 `
 
-const renderEvent = (post: object) => {
-  const title: string = get(post, "frontmatter.title", "")
-  const description: string = get(post, "frontmatter.description", "")
-  const date: Moment = moment(get(post, "frontmatter.date"))
-  const location: string = get(post, "frontmatter.location", "")
+const isFutureEvent = (event: object) => {
+  const today = moment()
+  const eventDate = moment(get(event, "frontmatter.date"))
+  return today <= eventDate
+}
+
+const renderEvent = (event: object) => {
+  const title: string = get(event, "frontmatter.title", "")
+  const description: string = get(event, "frontmatter.description", "")
+  const date: Moment = moment(get(event, "frontmatter.date"))
+  const location: string = get(event, "frontmatter.location", "")
 
   return (
     <Event
@@ -62,7 +68,7 @@ const Events = (props: IEventsProps) => {
     query Events {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/events/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { fields: [frontmatter___date], order: ASC }
       ) {
         edges {
           node {
@@ -79,11 +85,12 @@ const Events = (props: IEventsProps) => {
   `)
 
   const events = slice(parseAllMarkdownRemark(data), 0, props.limit)
+  const futureEvents = events.filter(isFutureEvent)
 
   return (
     <Container>
       <Header>Events</Header>
-      <Content>{events.map(renderEvent)}</Content>
+      <Content>{futureEvents.map(renderEvent)}</Content>
     </Container>
   )
 }
